@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://game_scene"]
+[gd_scene load_steps=12 format=3 uid="uid://game_scene"]
 
 [ext_resource type="PackedScene" path="res://scenes/background/background.tscn" id="1_background"]
 [ext_resource type="PackedScene" path="res://scenes/bucket/bucket.tscn" id="2_bucket"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scripts/components/overflow_detector.gd" id="6_overflow"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="7_hud"]
 [ext_resource type="Script" path="res://scripts/components/score_manager.gd" id="8_score_manager"]
+[ext_resource type="Script" path="res://scripts/components/screen_shake.gd" id="9_screen_shake"]
+[ext_resource type="Script" path="res://scripts/components/merge_feedback.gd" id="10_merge_feedback"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_overflow"]
 size = Vector2(400, 20)
@@ -17,9 +19,15 @@ script = ExtResource("5_game")
 
 [node name="Background" parent="." instance=ExtResource("1_background")]
 
+[node name="ShakeCamera" type="Camera2D" parent="." groups=["shake_camera"]]
+position = Vector2(540, 960)
+script = ExtResource("9_screen_shake")
+
 [node name="Bucket" parent="." groups=["bucket"] instance=ExtResource("2_bucket")]
 
 [node name="FruitContainer" type="Node2D" parent="." groups=["fruit_container"]]
+
+[node name="EffectsContainer" type="Node2D" parent="." groups=["effects_container"]]
 
 [node name="PopupContainer" type="Node2D" parent="." groups=["popup_container"]]
 
@@ -28,6 +36,9 @@ script = ExtResource("3_merge_manager")
 
 [node name="ScoreManager" type="Node" parent="." groups=["score_manager"]]
 script = ExtResource("8_score_manager")
+
+[node name="MergeFeedback" type="Node" parent="." groups=["merge_feedback"]]
+script = ExtResource("10_merge_feedback")
 
 [node name="DropController" type="Node2D" parent="."]
 script = ExtResource("4_drop_controller")
