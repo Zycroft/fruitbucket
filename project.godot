@@ -8,7 +8,7 @@ config_version=5
 
 config/name="Bucket"
 config/description="Roguelike Suika Game"
-run/main_scene=""
+run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]

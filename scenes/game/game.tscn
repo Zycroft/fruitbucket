@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://game_scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/background/background.tscn" id="1_background"]
+[ext_resource type="PackedScene" path="res://scenes/bucket/bucket.tscn" id="2_bucket"]
+[ext_resource type="Script" path="res://scripts/components/merge_manager.gd" id="3_merge_manager"]
+[ext_resource type="Script" path="res://scripts/components/drop_controller.gd" id="4_drop_controller"]
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="5_game"]
+
+[node name="Game" type="Node2D" groups=["game"]]
+script = ExtResource("5_game")
+
+[node name="Background" parent="." instance=ExtResource("1_background")]
+
+[node name="Bucket" parent="." groups=["bucket"] instance=ExtResource("2_bucket")]
+
+[node name="FruitContainer" type="Node2D" parent="." groups=["fruit_container"]]
+
+[node name="MergeManager" type="Node" parent="." groups=["merge_manager"]]
+script = ExtResource("3_merge_manager")
+
+[node name="DropController" type="Node2D" parent="."]
+script = ExtResource("4_drop_controller")
+
+[node name="DropGuide" type="Line2D" parent="DropController"]
+default_color = Color(1, 1, 1, 0.15)
+width = 1.5
