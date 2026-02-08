@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 1 of 8 (Core Physics & Merging)
-Plan: 2 of 3 in current phase
-Status: Executing
-Last activity: 2026-02-08 -- Completed 01-02-PLAN.md (fruit scene, MergeManager, DropController, game scene)
+Plan: 3 of 3 in current phase
+Status: Checkpoint pending (human-verify playtest)
+Last activity: 2026-02-08 -- 01-03-PLAN.md Task 1 complete, awaiting playtest checkpoint
 
 Progress: [██░░░░░░░░] 13%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
+- Total plans completed: 2 (01-03 Task 1 done, checkpoint pending)
 - Average duration: 4min
-- Total execution time: 0.13 hours
+- Total execution time: 0.2 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-core-physics-merging | 2/3 | 8min | 4min |
+| 01-core-physics-merging | 2/3 (3 in progress) | 12min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-02 (4min)
+- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min, checkpoint pending)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -52,6 +52,9 @@ Recent decisions affecting current work:
 - [01-02]: Instance ID tiebreaker ensures exactly one merge request per colliding pair
 - [01-02]: 0.5s merge grace period prevents immediate re-merge of freshly spawned fruits
 - [01-02]: DropController uses _unhandled_input so future UI can consume events first
+- [01-03]: OverflowDetector per-fruit dwell timer (instance ID dictionary) prevents one fruit's bounce from affecting another's accumulated time
+- [01-03]: Next-fruit preview via EventBus.next_fruit_changed for DropController-HUD decoupling
+- [01-03]: Bucket rim warning enhanced with width increase (5px to 8px) above 80% danger
 
 ### Pending Todos
 
@@ -65,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 01-02-PLAN.md
-Resume file: .planning/phases/01-core-physics-merging/01-02-SUMMARY.md
+Stopped at: 01-03-PLAN.md Task 2 checkpoint (human-verify playtest)
+Resume file: .planning/phases/01-core-physics-merging/01-03-SUMMARY.md
