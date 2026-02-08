@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FruitData" load_steps=3 format=3 uid="uid://strawberry04"]
+
+[ext_resource type="Script" path="res://resources/fruit_data/fruit_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fruits/placeholder_fruit.png" id="2_sprite"]
+
+[resource]
+script = ExtResource("1_script")
+tier = 3
+fruit_name = "Strawberry"
+radius = 35.0
+sprite = ExtResource("2_sprite")
+score_value = 10
+color = Color(1.0, 0.271, 0.0, 1)
+mass_override = 1.8
+is_droppable = true
