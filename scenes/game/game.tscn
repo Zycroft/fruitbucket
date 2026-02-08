@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://game_scene"]
+[gd_scene load_steps=10 format=3 uid="uid://game_scene"]
 
 [ext_resource type="PackedScene" path="res://scenes/background/background.tscn" id="1_background"]
 [ext_resource type="PackedScene" path="res://scenes/bucket/bucket.tscn" id="2_bucket"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="5_game"]
 [ext_resource type="Script" path="res://scripts/components/overflow_detector.gd" id="6_overflow"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="7_hud"]
+[ext_resource type="Script" path="res://scripts/components/score_manager.gd" id="8_score_manager"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_overflow"]
 size = Vector2(400, 20)
@@ -22,6 +23,9 @@ script = ExtResource("5_game")
 
 [node name="MergeManager" type="Node" parent="." groups=["merge_manager"]]
 script = ExtResource("3_merge_manager")
+
+[node name="ScoreManager" type="Node" parent="." groups=["score_manager"]]
+script = ExtResource("8_score_manager")
 
 [node name="DropController" type="Node2D" parent="."]
 script = ExtResource("4_drop_controller")
