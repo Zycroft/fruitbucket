@@ -5,33 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 2: Scoring & Chain Reactions
+**Current focus:** Phase 2 complete. Ready for Phase 3.
 
 ## Current Position
 
-Phase: 2 of 8 (Scoring & Chain Reactions)
-Plan: 1 of 2 in current phase
-Status: Executing Phase 2 -- Plan 01 complete (ScoreManager), Plan 02 next (HUD/popups)
-Last activity: 2026-02-08 -- Phase 2 Plan 01 executed (2 tasks, ScoreManager + scoring signals + coin economy)
+Phase: 2 of 8 (Scoring & Chain Reactions) -- COMPLETE
+Plan: 2 of 2 in current phase (all plans complete)
+Status: Phase 2 complete -- ready for Phase 3 planning
+Last activity: 2026-02-08 -- Phase 2 Plan 02 executed (2 tasks, HUD popups + playtest approved)
 
-Progress: [██░░░░░░░░] 18%
+Progress: [██░░░░░░░░] 23%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 4min
-- Total execution time: 0.2 hours
+- Total execution time: 0.3 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-core-physics-merging | 3/3 | 12min | 4min |
-| 02-scoring-chain-reactions | 1/2 | 2min | 2min |
+| 02-scoring-chain-reactions | 2/2 | 7min | 3.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min), 02-01 (2min)
+- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min), 02-01 (2min), 02-02 (5min)
 - Trend: stable/improving
 
 *Updated after each plan completion*
@@ -60,6 +60,10 @@ Recent decisions affecting current work:
 - [02-01]: Chain multipliers use Fibonacci-like sequence [1,2,3,5,8,13,21,34,55,89] clamped at bounds
 - [02-01]: ChainTimer created programmatically in _ready() for script-only component pattern
 - [02-01]: Per-merge multiplier application -- each cascade merge gets its own chain-position multiplier
+- [02-02]: PopupContainer uses group-based discovery (popup_container group) matching MergeManager pattern
+- [02-02]: Chain label hidden for chain_count < 2 to prevent "CHAIN x1!" spam
+- [02-02]: Tween-based UI animation with pivot_offset set after text assignment for correct centered scaling
+- [02-02]: Coin label styled dark grey for secondary emphasis, score remains primary focus
 
 ### Pending Todos
 
@@ -73,5 +77,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 02-01-PLAN.md (ScoreManager), ready for 02-02-PLAN.md (HUD/popups)
+Stopped at: Completed 02-02-PLAN.md (HUD/popups, playtest approved). Phase 2 complete. Ready for Phase 3 planning.
 Resume file: None
