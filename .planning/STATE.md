@@ -10,16 +10,16 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 2 of 8 (Scoring & Chain Reactions)
-Plan: 0 of 1 in current phase
-Status: Phase 1 complete, ready to plan Phase 2
-Last activity: 2026-02-08 -- Phase 1 executed (3 plans, 3 waves), playtest approved, verification passed 18/18
+Plan: 1 of 2 in current phase
+Status: Executing Phase 2 -- Plan 01 complete (ScoreManager), Plan 02 next (HUD/popups)
+Last activity: 2026-02-08 -- Phase 2 Plan 01 executed (2 tasks, ScoreManager + scoring signals + coin economy)
 
-Progress: [█░░░░░░░░░] 12%
+Progress: [██░░░░░░░░] 18%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: 4min
 - Total execution time: 0.2 hours
 
@@ -28,10 +28,11 @@ Progress: [█░░░░░░░░░] 12%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-core-physics-merging | 3/3 | 12min | 4min |
+| 02-scoring-chain-reactions | 1/2 | 2min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min)
-- Trend: stable
+- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min), 02-01 (2min)
+- Trend: stable/improving
 
 *Updated after each plan completion*
 
@@ -55,6 +56,10 @@ Recent decisions affecting current work:
 - [01-03]: OverflowDetector per-fruit dwell timer (instance ID dictionary) prevents one fruit's bounce from affecting another's accumulated time
 - [01-03]: Next-fruit preview via EventBus.next_fruit_changed for DropController-HUD decoupling
 - [01-03]: Bucket rim warning enhanced with width increase (5px to 8px) above 80% danger
+- [02-01]: Watermelon vanish awards flat 1000 bonus replacing tier score (not additive per research pitfall #4)
+- [02-01]: Chain multipliers use Fibonacci-like sequence [1,2,3,5,8,13,21,34,55,89] clamped at bounds
+- [02-01]: ChainTimer created programmatically in _ready() for script-only component pattern
+- [02-01]: Per-merge multiplier application -- each cascade merge gets its own chain-position multiplier
 
 ### Pending Todos
 
@@ -68,5 +73,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Phase 1 complete, ready for Phase 2
+Stopped at: Completed 02-01-PLAN.md (ScoreManager), ready for 02-02-PLAN.md (HUD/popups)
 Resume file: None
