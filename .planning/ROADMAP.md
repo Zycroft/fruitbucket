@@ -48,10 +48,11 @@ Plans:
   1. Each merge awards points that increase with fruit tier (higher-tier merges are worth more)
   2. Merges that happen within a short time window of a previous merge trigger chain multipliers (x2, x3, etc.) that multiply the score award
   3. Score is displayed in the HUD and updates in real-time as merges occur
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
+- [ ] 02-01-PLAN.md -- ScoreManager with chain tracking, coin economy, EventBus signals, FruitData score values (Wave 1)
+- [ ] 02-02-PLAN.md -- Floating score popups, animated HUD, chain counter, coin display, playtest (Wave 2)
 
 ### Phase 3: Merge Feedback & Juice
 **Goal**: Merges produce satisfying visual and audio feedback that scales with fruit tier and chain length, making the core loop feel rewarding and spectacle-worthy.
@@ -151,7 +152,7 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Core Physics & Merging | 3/3 | ✓ Complete | 2026-02-08 |
-| 2. Scoring & Chain Reactions | 0/1 | Not started | - |
+| 2. Scoring & Chain Reactions | 0/2 | Not started | - |
 | 3. Merge Feedback & Juice | 0/1 | Not started | - |
 | 4. Game Flow & Input | 0/1 | Not started | - |
 | 5. Card System Infrastructure | 0/3 | Not started | - |
