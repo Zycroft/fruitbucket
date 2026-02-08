@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 1: Core Physics & Merging
+**Current focus:** Phase 2: Scoring & Chain Reactions
 
 ## Current Position
 
-Phase: 1 of 8 (Core Physics & Merging)
-Plan: 3 of 3 in current phase
-Status: Checkpoint pending (human-verify playtest)
-Last activity: 2026-02-08 -- 01-03-PLAN.md Task 1 complete, awaiting playtest checkpoint
+Phase: 2 of 8 (Scoring & Chain Reactions)
+Plan: 0 of 1 in current phase
+Status: Phase 1 complete, ready to plan Phase 2
+Last activity: 2026-02-08 -- Phase 1 executed (3 plans, 3 waves), playtest approved, verification passed 18/18
 
-Progress: [██░░░░░░░░] 13%
+Progress: [█░░░░░░░░░] 12%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2 (01-03 Task 1 done, checkpoint pending)
+- Total plans completed: 3
 - Average duration: 4min
 - Total execution time: 0.2 hours
 
@@ -27,10 +27,10 @@ Progress: [██░░░░░░░░] 13%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-core-physics-merging | 2/3 (3 in progress) | 12min | 4min |
+| 01-core-physics-merging | 3/3 | 12min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min, checkpoint pending)
+- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -62,11 +62,11 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Phase 1]: Physics tuning values (solver iterations, friction, bounce, damping) are starting estimates -- will need iteration during execution
-- [Phase 1]: If stacking instability persists with 20+ fruits, evaluate Rapier physics plugin as fallback (1:1 API swap)
+- [Phase 1 resolved]: Physics stacking stable with solver_iterations=6, playtest confirmed 20+ fruit stacking without jitter
+- [Phase 1 lesson]: ColorRect/Control nodes default to mouse_filter=STOP — always set IGNORE on non-interactive UI elements
 
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: 01-03-PLAN.md Task 2 checkpoint (human-verify playtest)
-Resume file: .planning/phases/01-core-physics-merging/01-03-SUMMARY.md
+Stopped at: Phase 1 complete, ready for Phase 2
+Resume file: None
