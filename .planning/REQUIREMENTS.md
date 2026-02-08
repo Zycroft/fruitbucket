@@ -9,8 +9,8 @@
 
 - [ ] **PHYS-01**: User can drop fruits into a bounded container by clicking/tapping to position horizontally and releasing to drop
 - [ ] **PHYS-02**: Fruits obey gravity, collide with each other and container walls, stack and settle naturally using RigidBody2D physics
-- [ ] **PHYS-03**: 11 fruit tiers exist (blueberry, cherry, strawberry, lemon, banana, orange, apple, pear, grape, pineapple, watermelon) with increasing sizes
-- [ ] **PHYS-04**: Only the 5 smallest fruit tiers appear as drops; tiers 6-11 only appear via merging
+- [ ] **PHYS-03**: 8 fruit tiers exist (blueberry, grape, cherry, strawberry, orange, apple, pear, watermelon) with increasing sizes (updated per Phase 1 context discussion)
+- [ ] **PHYS-04**: Only the 5 smallest fruit tiers appear as drops; tiers 6-8 only appear via merging
 - [ ] **PHYS-05**: Two identical fruits auto-merge on contact into the next tier at the contact midpoint
 - [ ] **PHYS-06**: Two watermelons merging vanish (clearing space, awarding bonus score)
 - [ ] **PHYS-07**: Game ends when any fruit remains above the overflow line for 2+ seconds (grace period prevents false game-overs from bounce)
