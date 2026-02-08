@@ -33,12 +33,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Two identical fruits touching each other merge into the next tier at the contact midpoint, and two watermelons merging vanish with no crash or duplicate spawn
   4. Only tiers 1-5 (blueberry through orange) appear as drops; the next fruit to drop is previewed in the UI
   5. Game ends when a fruit stays above the overflow line for 2+ seconds, but does not falsely trigger during bounces or chain reactions
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md -- Project setup, FruitData resources, bucket scene, background (Wave 1)
+- [ ] 01-02-PLAN.md -- Fruit scene, MergeManager gatekeeper, DropController, game scene (Wave 2)
+- [ ] 01-03-PLAN.md -- Overflow detector, HUD, game assembly, playtest checkpoint (Wave 3)
 
 ### Phase 2: Scoring & Chain Reactions
 **Goal**: Every merge awards points scaled by fruit tier, and rapid consecutive merges trigger chain reaction multipliers that reward skillful play.
@@ -150,7 +150,7 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Core Physics & Merging | 0/3 | Not started | - |
+| 1. Core Physics & Merging | 0/3 | Planned | - |
 | 2. Scoring & Chain Reactions | 0/1 | Not started | - |
 | 3. Merge Feedback & Juice | 0/1 | Not started | - |
 | 4. Game Flow & Input | 0/1 | Not started | - |
