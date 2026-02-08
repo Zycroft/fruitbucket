@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 2 complete. Ready for Phase 3.
+**Current focus:** Phase 3 in progress. Feedback infrastructure built, orchestrator next.
 
 ## Current Position
 
-Phase: 2 of 8 (Scoring & Chain Reactions) -- COMPLETE
-Plan: 2 of 2 in current phase (all plans complete)
-Status: Phase 2 complete -- ready for Phase 3 planning
-Last activity: 2026-02-08 -- Phase 2 Plan 02 executed (2 tasks, HUD popups + playtest approved)
+Phase: 3 of 8 (Merge Feedback & Juice) -- IN PROGRESS
+Plan: 1 of 2 in current phase (Plan 01 complete)
+Status: Phase 3 Plan 01 complete -- ready for Plan 02
+Last activity: 2026-02-08 -- Phase 3 Plan 01 executed (2 tasks, shake/SFX/particles infrastructure)
 
-Progress: [██░░░░░░░░] 23%
+Progress: [███░░░░░░░] 29%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 4min
-- Total execution time: 0.3 hours
+- Total plans completed: 6
+- Average duration: 3.5min
+- Total execution time: 0.35 hours
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [██░░░░░░░░] 23%
 |-------|-------|-------|----------|
 | 01-core-physics-merging | 3/3 | 12min | 4min |
 | 02-scoring-chain-reactions | 2/2 | 7min | 3.5min |
+| 03-merge-feedback-juice | 1/2 | 2min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-02 (4min), 01-03 (4min), 02-01 (2min), 02-02 (5min)
+- Last 5 plans: 01-02 (4min), 01-03 (4min), 02-01 (2min), 02-02 (5min), 03-01 (2min)
 - Trend: stable/improving
 
 *Updated after each plan completion*
@@ -64,6 +65,9 @@ Recent decisions affecting current work:
 - [02-02]: Chain label hidden for chain_count < 2 to prevent "CHAIN x1!" spam
 - [02-02]: Tween-based UI animation with pivot_offset set after text assignment for correct centered scaling
 - [02-02]: Coin label styled dark grey for secondary emphasis, score remains primary focus
+- [03-01]: SFX bus graceful fallback -- push_warning and use Master if SFX bus missing
+- [03-01]: All three play functions reuse same merge_pop.wav with pitch/volume variation per context
+- [03-01]: No finished->queue_free in particle scene (editor crash bug #107743); connect at spawn time
 
 ### Pending Todos
 
@@ -77,5 +81,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 02-02-PLAN.md (HUD/popups, playtest approved). Phase 2 complete. Ready for Phase 3 planning.
+Stopped at: Completed 03-01-PLAN.md (shake/SFX/particles infrastructure). Ready for 03-02-PLAN.md (MergeFeedback orchestrator).
 Resume file: None
