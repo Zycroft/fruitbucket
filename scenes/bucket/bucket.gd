@@ -31,11 +31,17 @@ func get_overflow_y() -> float:
 func set_warning_level(level: float) -> void:
 	## Modulates the rim highlight from default dark brown to red.
 	## level: 0.0 = normal, 1.0 = full warning (red).
-	## Called by OverflowDetector in Plan 03.
+	## Called by OverflowDetector.
+	var clamped: float = clampf(level, 0.0, 1.0)
 	var rim: Line2D = $RimHighlight
 	var normal_color: Color = Color(0.42, 0.26, 0.15, 1.0)
 	var warning_color: Color = Color(1.0, 0.15, 0.1, 1.0)
-	rim.default_color = normal_color.lerp(warning_color, clampf(level, 0.0, 1.0))
+	rim.default_color = normal_color.lerp(warning_color, clamped)
+	# Extra urgency: increase rim width when danger is above 80%.
+	if clamped > 0.8:
+		rim.width = lerpf(5.0, 8.0, (clamped - 0.8) / 0.2)
+	else:
+		rim.width = 5.0
 
 
 func _draw() -> void:

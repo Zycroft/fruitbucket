@@ -2,6 +2,9 @@ extends Node2D
 ## Root game scene script. Orchestrates the game loop by managing state
 ## transitions and connecting to EventBus signals.
 
+## Reference to the HUD for score/preview updates.
+@onready var _hud: CanvasLayer = $HUD
+
 
 func _ready() -> void:
 	# Start in READY state, then transition to DROPPING after physics settles.
@@ -17,4 +20,3 @@ func _ready() -> void:
 
 func _on_game_over() -> void:
 	GameManager.change_state(GameManager.GameState.GAME_OVER)
-	print("GAME OVER")

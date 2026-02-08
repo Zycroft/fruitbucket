@@ -125,3 +125,4 @@ func _spawn_preview() -> void:
 func _roll_next_tier() -> void:
 	## Pick a random droppable tier (0-4, equal probability).
 	_next_tier = randi_range(0, 4)
+	EventBus.next_fruit_changed.emit(_next_tier)

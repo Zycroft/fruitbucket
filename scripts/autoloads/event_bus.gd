@@ -14,3 +14,6 @@ signal game_over_triggered()
 
 ## Emitted when GameManager transitions to a new state.
 signal game_state_changed(new_state: int)
+
+## Emitted when the DropController rolls the next fruit tier (for HUD preview).
+signal next_fruit_changed(tier: int)

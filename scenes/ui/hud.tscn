@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://hud_scene"]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_score"]
+font_size = 48
+font_color = Color(1, 1, 1, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_next"]
+font_size = 16
+font_color = Color(1, 1, 1, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gameover"]
+font_size = 72
+font_color = Color(1, 0.15, 0.1, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 0.8)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 390.0
+offset_top = 20.0
+offset_right = 690.0
+offset_bottom = 80.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "0"
+label_settings = SubResource("LabelSettings_score")
+
+[node name="NextFruitPreview" type="Control" parent="."]
+offset_left = 780.0
+offset_top = 40.0
+offset_right = 880.0
+offset_bottom = 140.0
+
+[node name="NextLabel" type="Label" parent="NextFruitPreview"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 100.0
+offset_bottom = 25.0
+horizontal_alignment = 1
+text = "NEXT"
+label_settings = SubResource("LabelSettings_next")
+
+[node name="NextFruitSprite" type="Sprite2D" parent="NextFruitPreview"]
+position = Vector2(50, 60)
+
+[node name="GameOverLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -50.0
+offset_right = 270.0
+offset_bottom = 50.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_gameover")
+visible = false
