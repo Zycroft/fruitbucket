@@ -13,7 +13,7 @@ Bucket delivers a Suika-style fruit-merging puzzle game with a roguelike card mo
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Core Physics & Merging** - Droppable, stackable, mergeable fruits in a physics container with overflow detection (completed 2026-02-08)
-- [ ] **Phase 2: Scoring & Chain Reactions** - Points on merge with chain reaction multipliers
+- [x] **Phase 2: Scoring & Chain Reactions** - Points on merge with chain reaction multipliers
 - [ ] **Phase 3: Merge Feedback & Juice** - Particles, screen shake, and escalating effects that make merging feel satisfying
 - [ ] **Phase 4: Game Flow & Input** - Pause menu, restart, and dual-platform input (mouse + touch)
 - [ ] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle
@@ -51,8 +51,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- ScoreManager with chain tracking, coin economy, EventBus signals, FruitData score values (Wave 1)
-- [ ] 02-02-PLAN.md -- Floating score popups, animated HUD, chain counter, coin display, playtest (Wave 2)
+- [x] 02-01-PLAN.md -- ScoreManager with chain tracking, coin economy, EventBus signals, FruitData score values (Wave 1)
+- [x] 02-02-PLAN.md -- Floating score popups, animated HUD, chain counter, coin display, playtest (Wave 2)
 
 ### Phase 3: Merge Feedback & Juice
 **Goal**: Merges produce satisfying visual and audio feedback that scales with fruit tier and chain length, making the core loop feel rewarding and spectacle-worthy.
@@ -152,7 +152,7 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Core Physics & Merging | 3/3 | ✓ Complete | 2026-02-08 |
-| 2. Scoring & Chain Reactions | 0/2 | Not started | - |
+| 2. Scoring & Chain Reactions | 2/2 | ✓ Complete | 2026-02-08 |
 | 3. Merge Feedback & Juice | 0/1 | Not started | - |
 | 4. Game Flow & Input | 0/1 | Not started | - |
 | 5. Card System Infrastructure | 0/3 | Not started | - |
