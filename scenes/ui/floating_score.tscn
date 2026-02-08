@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://floating_score"]
+
+[ext_resource type="Script" path="res://scenes/ui/floating_score.gd" id="1_script"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_popup"]
+font_size = 28
+font_color = Color(1, 1, 1, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 0.8)
+
+[node name="FloatingScore" type="Label"]
+offset_right = 200.0
+offset_bottom = 40.0
+mouse_filter = 2
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_popup")
+script = ExtResource("1_script")

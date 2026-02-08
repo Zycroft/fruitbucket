@@ -21,6 +21,8 @@ script = ExtResource("5_game")
 
 [node name="FruitContainer" type="Node2D" parent="." groups=["fruit_container"]]
 
+[node name="PopupContainer" type="Node2D" parent="." groups=["popup_container"]]
+
 [node name="MergeManager" type="Node" parent="." groups=["merge_manager"]]
 script = ExtResource("3_merge_manager")
 

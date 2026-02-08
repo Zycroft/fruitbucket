@@ -1,23 +1,36 @@
 extends CanvasLayer
-## HUD overlay displaying current score, next-fruit preview, and game-over text.
-## Listens to EventBus signals for updates.
+## HUD overlay displaying animated score counter, chain counter, coin display,
+## next-fruit preview, and game-over text. Spawns floating score popups at merge
+## positions via the world-space PopupContainer.
 
 ## All 8 FruitData resources loaded in tier order for sprite/color lookups.
 var _fruit_types: Array[FruitData] = []
+
+## Animated score counter state.
+var _displayed_score: int = 0
+var _score_tween: Tween = null
+
+## Chain display tween (killed on overlap).
+var _chain_tween: Tween = null
+
+## Preloaded floating score popup scene.
+var _floating_score_scene: PackedScene = preload("res://scenes/ui/floating_score.tscn")
 
 
 func _ready() -> void:
 	_load_fruit_types()
 
 	# Connect EventBus signals.
-	EventBus.fruit_merged.connect(_on_fruit_merged)
+	EventBus.score_awarded.connect(_on_score_awarded)
+	EventBus.chain_ended.connect(_on_chain_ended)
+	EventBus.coins_awarded.connect(_on_coins_awarded)
 	EventBus.game_state_changed.connect(_on_game_state_changed)
 	EventBus.next_fruit_changed.connect(_on_next_fruit_changed)
 
-	# Initialize score display.
-	update_score(GameManager.score)
-
-	# Hide game over label by default.
+	# Initialize displays.
+	$ScoreLabel.text = "0"
+	$CoinLabel.text = "Coins: %d" % GameManager.coins
+	$ChainLabel.visible = false
 	$GameOverLabel.visible = false
 
 
@@ -41,9 +54,98 @@ func _load_fruit_types() -> void:
 			push_error("HUD: Failed to load FruitData at %s" % path)
 
 
-func update_score(score: int) -> void:
-	## Update the score label display.
-	$ScoreLabel.text = str(score)
+func animate_score_to(new_score: int) -> void:
+	## Animate the score label from _displayed_score to new_score with roll-up
+	## counting and a scale punch.
+	if _score_tween and _score_tween.is_valid():
+		_score_tween.kill()
+
+	_score_tween = create_tween()
+
+	# Roll-up counting animation.
+	_score_tween.tween_method(_set_score_text, _displayed_score, new_score, 0.4) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	# Scale punch (centered via pivot_offset).
+	$ScoreLabel.pivot_offset = $ScoreLabel.size / 2.0
+	_score_tween.parallel().tween_property($ScoreLabel, "scale", Vector2(1.2, 1.2), 0.1) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_score_tween.tween_property($ScoreLabel, "scale", Vector2.ONE, 0.2)
+
+	_displayed_score = new_score
+
+
+func _set_score_text(value: int) -> void:
+	## Callback for tween_method roll-up animation.
+	$ScoreLabel.text = str(value)
+
+
+func _on_score_awarded(points: int, merge_pos: Vector2, chain_count: int, multiplier: int) -> void:
+	## Update score display and spawn floating popup at merge position.
+	animate_score_to(GameManager.score)
+
+	# Format popup text.
+	var popup_text: String
+	var is_chain: bool = multiplier > 1
+	if is_chain:
+		popup_text = "+%d x%d!" % [points, multiplier]
+	else:
+		popup_text = "+%d" % points
+
+	# Spawn floating score popup in world space.
+	var popup_container: Node2D = get_tree().get_first_node_in_group("popup_container") as Node2D
+	if popup_container:
+		var popup: Label = _floating_score_scene.instantiate()
+		popup_container.add_child(popup)
+		popup.show_score(popup_text, merge_pos, is_chain)
+
+	# Update chain display.
+	_show_chain(chain_count, multiplier)
+
+
+func _show_chain(chain_count: int, multiplier: int) -> void:
+	## Show chain counter for cascades (chain_count >= 2). Hide for single merges.
+	if chain_count < 2:
+		$ChainLabel.visible = false
+		return
+
+	$ChainLabel.visible = true
+	$ChainLabel.text = "CHAIN x%d!" % multiplier
+
+	# Kill previous chain tween to prevent overlap.
+	if _chain_tween and _chain_tween.is_valid():
+		_chain_tween.kill()
+
+	# Scale punch on chain label.
+	$ChainLabel.pivot_offset = $ChainLabel.size / 2.0
+	_chain_tween = create_tween()
+	_chain_tween.tween_property($ChainLabel, "scale", Vector2(1.3, 1.3), 0.1) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_chain_tween.tween_property($ChainLabel, "scale", Vector2.ONE, 0.2)
+
+
+func _on_chain_ended(_chain_length: int) -> void:
+	## Chain ended -- fade out the chain label.
+	if _chain_tween and _chain_tween.is_valid():
+		_chain_tween.kill()
+
+	_chain_tween = create_tween()
+	_chain_tween.tween_property($ChainLabel, "modulate:a", 0.0, 0.3)
+	_chain_tween.tween_callback(func():
+		$ChainLabel.visible = false
+		$ChainLabel.modulate.a = 1.0
+	)
+
+
+func _on_coins_awarded(_new_coins: int, total_coins: int) -> void:
+	## Update coin display with scale punch.
+	$CoinLabel.text = "Coins: %d" % total_coins
+
+	$CoinLabel.pivot_offset = $CoinLabel.size / 2.0
+	var coin_tween: Tween = create_tween()
+	coin_tween.tween_property($CoinLabel, "scale", Vector2(1.15, 1.15), 0.1) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	coin_tween.tween_property($CoinLabel, "scale", Vector2.ONE, 0.15)
 
 
 func update_next_fruit(tier: int) -> void:
@@ -60,12 +162,6 @@ func update_next_fruit(tier: int) -> void:
 			var target_size: float = 50.0
 			var s: float = target_size / tex_size
 			$NextFruitPreview/NextFruitSprite.scale = Vector2(s, s)
-
-
-func _on_fruit_merged(_old_tier: int, _new_tier: int, _pos: Vector2) -> void:
-	## When fruits merge, update the score display.
-	## Phase 2 will populate actual score values; for now just display the current score.
-	update_score(GameManager.score)
 
 
 func _on_game_state_changed(new_state: int) -> void:
