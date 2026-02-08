@@ -62,10 +62,11 @@ Plans:
   1. Every merge produces a particle burst, screen shake, and sound effect that scale in intensity with the tier of fruit created
   2. Chain reactions produce escalating feedback -- shake increases, particle colors shift, and effects build with each consecutive merge in the chain
   3. Feedback is visually distinct enough that a player can tell the difference between a single merge and a 3+ chain reaction without looking at the score
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md -- Screen shake Camera2D, SFX pool autoload, particle scene, placeholder audio (Wave 1)
+- [ ] 03-02-PLAN.md -- MergeFeedback orchestrator, game scene integration, chain escalation, playtest (Wave 2)
 
 ### Phase 4: Game Flow & Input
 **Goal**: Players can pause, resume, restart, and quit mid-run, and the game works equally well with mouse/keyboard and touch input.
@@ -153,7 +154,7 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 |-------|----------------|--------|-----------|
 | 1. Core Physics & Merging | 3/3 | ✓ Complete | 2026-02-08 |
 | 2. Scoring & Chain Reactions | 2/2 | ✓ Complete | 2026-02-08 |
-| 3. Merge Feedback & Juice | 0/1 | Not started | - |
+| 3. Merge Feedback & Juice | 0/2 | Not started | - |
 | 4. Game Flow & Input | 0/1 | Not started | - |
 | 5. Card System Infrastructure | 0/3 | Not started | - |
 | 6. Card Effects -- Physics & Merge | 0/2 | Not started | - |
