@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_hud"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_score"]
-font_size = 48
+font_size = 52
 font_color = Color(1, 1, 1, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 0.6)
@@ -25,7 +25,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 0.8)
 
 [sub_resource type="LabelSettings" id="LabelSettings_coin"]
-font_size = 24
+font_size = 28
 font_color = Color(1, 1, 1, 0.7)
 outline_size = 3
 outline_color = Color(0, 0, 0, 0.6)
