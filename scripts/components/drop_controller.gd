@@ -69,8 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion and _current_fruit:
 		var clamped_x: float = clampf(event.position.x, _bucket_left, _bucket_right)
-		_current_fruit.global_position.x = clamped_x
-		_current_fruit.global_position.y = _drop_y
+		_current_fruit.global_position = Vector2(clamped_x, _drop_y)
 		_last_drop_x = clamped_x
 
 		# Update the drop guide line.

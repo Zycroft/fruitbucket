@@ -1,0 +1,13 @@
+# Godot 4 generated files
+.godot/
+
+# Godot UID cache files
+*.uid
+
+# Import metadata
+*.import
+
+# OS generated files
+.DS_Store
+Thumbs.db
+nul

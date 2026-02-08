@@ -5,12 +5,14 @@
 [node name="Wall" type="ColorRect" parent="."]
 offset_right = 1080.0
 offset_bottom = 1920.0
+mouse_filter = 2
 color = Color(0.961, 0.902, 0.816, 1)
 
 [node name="Counter" type="ColorRect" parent="."]
 offset_top = 620.0
 offset_right = 1080.0
 offset_bottom = 1920.0
+mouse_filter = 2
 color = Color(0.627, 0.51, 0.427, 1)
 
 [node name="CounterEdge" type="Line2D" parent="."]

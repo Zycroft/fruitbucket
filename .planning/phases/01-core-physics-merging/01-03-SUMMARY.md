@@ -50,7 +50,7 @@ patterns-established:
 # Metrics
 duration: 4min
 completed: 2026-02-08
-status: checkpoint-pending
+status: complete
 ---
 
 # Phase 1 Plan 3: Overflow Detection & HUD Summary
@@ -61,8 +61,8 @@ status: checkpoint-pending
 
 - **Duration:** 4 min
 - **Started:** 2026-02-08T18:58:57Z
-- **Completed:** 2026-02-08T19:02:33Z (Task 1 only; Task 2 checkpoint pending)
-- **Tasks:** 1 of 2 (Task 2 is human-verify checkpoint)
+- **Completed:** 2026-02-08
+- **Tasks:** 2 of 2
 - **Files created:** 3
 - **Files modified:** 5
 
@@ -78,7 +78,7 @@ status: checkpoint-pending
 Each task was committed atomically:
 
 1. **Task 1: Create overflow detector with dwell timer and HUD with next-fruit preview** - `700e0d9` (feat)
-2. **Task 2: Playtest complete Phase 1 game loop** - CHECKPOINT PENDING (human-verify)
+2. **Task 2: Playtest complete Phase 1 game loop** - APPROVED (human-verify passed)
 
 ## Files Created/Modified
 - `scripts/components/overflow_detector.gd` - OverflowDetector class: Area2D dwell timer with per-fruit tracking, OVERFLOW_DURATION=2.0s, body_entered/exited guards, _physics_process accumulation
@@ -100,14 +100,15 @@ Each task was committed atomically:
 None - plan executed exactly as written.
 
 ## Issues Encountered
-None
+- **ColorRect mouse_filter bug:** Background ColorRects (Wall, Counter) had default mouse_filter=STOP which consumed all mouse events, blocking DropController._unhandled_input(). Fixed by setting mouse_filter=IGNORE (2) on all background and HUD Control nodes.
+- **global_position component assignment:** Changed `_current_fruit.global_position.x = val` / `.y = val` to single `_current_fruit.global_position = Vector2(x, y)` for reliability with RigidBody2D.
+- **Window size override:** Added window_width_override=540, window_height_override=960 to project.godot so the 1080x1920 portrait viewport fits on desktop monitors.
 
 ## User Setup Required
 None - no external service configuration required.
 
 ## Next Phase Readiness
-- Complete Phase 1 game loop implemented: drop -> stack -> merge -> overflow warning -> game over
-- Awaiting human playtest verification (Task 2 checkpoint) before marking Phase 1 complete
+- Complete Phase 1 game loop implemented and playtested: drop -> stack -> merge -> overflow warning -> game over
 - Score display ready for Phase 2 scoring logic (currently shows 0)
 - HUD extensible for future enhancements (card slots, timer, etc.)
 - EventBus has all cross-system signals needed for Phase 2 chain reactions and scoring
@@ -120,4 +121,4 @@ None - no external service configuration required.
 
 ---
 *Phase: 01-core-physics-merging*
-*Completed: 2026-02-08 (pending playtest)*
+*Completed: 2026-02-08 (playtest approved)*
