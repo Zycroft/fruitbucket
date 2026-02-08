@@ -17,3 +17,15 @@ signal game_state_changed(new_state: int)
 
 ## Emitted when the DropController rolls the next fruit tier (for HUD preview).
 signal next_fruit_changed(tier: int)
+
+## Emitted on every merge with calculated score, chain info, and position for popups.
+signal score_awarded(points: int, position: Vector2, chain_count: int, multiplier: int)
+
+## Emitted when a cascade chain ends (no merge within the settling window).
+signal chain_ended(chain_length: int)
+
+## Emitted when cumulative score crosses a coin threshold (every 100 points).
+signal coins_awarded(new_coins: int, total_coins: int)
+
+## Emitted when cumulative score crosses a milestone threshold (for Phase 5 shop triggers).
+signal score_threshold_reached(threshold: int)

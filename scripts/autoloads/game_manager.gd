@@ -12,6 +12,7 @@ enum GameState {
 
 var current_state: GameState = GameState.READY
 var score: int = 0
+var coins: int = 0
 
 
 func change_state(new_state: GameState) -> void:
@@ -23,4 +24,5 @@ func change_state(new_state: GameState) -> void:
 
 func reset_game() -> void:
 	score = 0
+	coins = 0
 	change_state(GameState.READY)
