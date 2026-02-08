@@ -19,19 +19,21 @@ func show_score(text_value: String, start_pos: Vector2, is_chain: bool) -> void:
 	var tween: Tween = create_tween()
 	tween.set_parallel(true)
 
+	var duration: float = 1.4 if is_chain else 1.2
+
 	# Rise upward.
-	tween.tween_property(self, "position:y", position.y - 80.0, 0.8) \
+	tween.tween_property(self, "position:y", position.y - 100.0, duration) \
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	# Fade out.
-	tween.tween_property(self, "modulate:a", 0.0, 0.8) \
+	# Fade out (starts fading after a brief visible hold).
+	tween.tween_property(self, "modulate:a", 0.0, duration) \
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
-	# Scale punch for chain popups.
+	# Scale punch for chain popups — bigger for emphasis.
 	if is_chain:
-		tween.tween_property(self, "scale", Vector2(1.5, 1.5), 0.15) \
+		tween.tween_property(self, "scale", Vector2(1.8, 1.8), 0.15) \
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		tween.chain().tween_property(self, "scale", Vector2.ONE, 0.3)
+		tween.chain().tween_property(self, "scale", Vector2(1.3, 1.3), 0.3)
 
 	# Free after animation completes to prevent popup accumulation.
 	tween.chain().tween_callback(queue_free)

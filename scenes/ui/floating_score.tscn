@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/floating_score.gd" id="1_script"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_popup"]
-font_size = 28
+font_size = 36
 font_color = Color(1, 1, 1, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 0.8)

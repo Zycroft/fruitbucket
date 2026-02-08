@@ -26,9 +26,9 @@ outline_color = Color(0, 0, 0, 0.8)
 
 [sub_resource type="LabelSettings" id="LabelSettings_coin"]
 font_size = 28
-font_color = Color(1, 1, 1, 0.7)
+font_color = Color(0.3, 0.3, 0.3, 1)
 outline_size = 3
-outline_color = Color(0, 0, 0, 0.6)
+outline_color = Color(0, 0, 0, 0.3)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
