@@ -1,7 +1,7 @@
 # Requirements: Bucket
 
 **Defined:** 2026-02-07
-**Core Value:** The drop-merge-physics loop must feel satisfying and correct — fruits fall naturally, collide realistically, and merge reliably.
+**Core Value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
 
 ## v1 Requirements
 
@@ -40,16 +40,16 @@
 
 ### Card Effects
 
-- [ ] **EFCT-01**: Bouncy Berry (Common) — small fruits (tier 1-3) bounce 50% higher on impact
-- [ ] **EFCT-02**: Heavy Hitter (Uncommon) — next 3 drops have 2x mass, push existing fruits harder
-- [ ] **EFCT-03**: Wild Fruit (Rare) — one random fruit on screen becomes wild (merges with same OR adjacent tier)
-- [ ] **EFCT-04**: Quick Fuse (Common) — merges within 1 second of previous merge grant +25% score
-- [ ] **EFCT-05**: Fruit Frenzy (Common) — +2x score multiplier for chains of 3+
-- [ ] **EFCT-06**: Big Game Hunter (Uncommon) — +50% score for tier 7+ merges
-- [ ] **EFCT-07**: Golden Touch (Common) — +2 coins per merge
-- [ ] **EFCT-08**: Lucky Break (Uncommon) — 15% chance any merge drops bonus 5 coins
-- [ ] **EFCT-09**: Cherry Bomb (Common) — when cherries merge, push all fruits in a small radius outward
-- [ ] **EFCT-10**: Pineapple Express (Uncommon) — when a pineapple is created, earn +20 coins and +100 score
+- [ ] **EFCT-01**: Bouncy Berry (Common) -- small fruits (tier 1-3) bounce 50% higher on impact
+- [ ] **EFCT-02**: Heavy Hitter (Uncommon) -- next 3 drops have 2x mass, push existing fruits harder
+- [ ] **EFCT-03**: Wild Fruit (Rare) -- one random fruit on screen becomes wild (merges with same OR adjacent tier)
+- [ ] **EFCT-04**: Quick Fuse (Common) -- merges within 1 second of previous merge grant +25% score
+- [ ] **EFCT-05**: Fruit Frenzy (Common) -- +2x score multiplier for chains of 3+
+- [ ] **EFCT-06**: Big Game Hunter (Uncommon) -- +50% score for tier 7+ merges
+- [ ] **EFCT-07**: Golden Touch (Common) -- +2 coins per merge
+- [ ] **EFCT-08**: Lucky Break (Uncommon) -- 15% chance any merge drops bonus 5 coins
+- [ ] **EFCT-09**: Cherry Bomb (Common) -- when cherries merge, push all fruits in a small radius outward
+- [ ] **EFCT-10**: Pineapple Express (Uncommon) -- when a pineapple is created, earn +20 coins and +100 score
 
 ### Game Management
 
@@ -62,11 +62,11 @@
 ### Content Expansion
 
 - **POOL-01**: Expand card pool to 20-30 cards
-- **SYNC-01**: Card synergy pass — cards that reference/amplify other cards
+- **SYNC-01**: Card synergy pass -- cards that reference/amplify other cards
 
 ### Meta-Progression
 
-- **META-01**: Meta-progression — unlock new cards to appear in pool
+- **META-01**: Meta-progression -- unlock new cards to appear in pool
 - **SLOT-01**: Unlock 4th and 5th card slots
 
 ### Polish
@@ -97,49 +97,49 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PHYS-01 | — | Pending |
-| PHYS-02 | — | Pending |
-| PHYS-03 | — | Pending |
-| PHYS-04 | — | Pending |
-| PHYS-05 | — | Pending |
-| PHYS-06 | — | Pending |
-| PHYS-07 | — | Pending |
-| PHYS-08 | — | Pending |
-| SCOR-01 | — | Pending |
-| SCOR-02 | — | Pending |
-| SCOR-03 | — | Pending |
-| SCOR-04 | — | Pending |
-| SCOR-05 | — | Pending |
-| CARD-01 | — | Pending |
-| CARD-02 | — | Pending |
-| CARD-03 | — | Pending |
-| CARD-04 | — | Pending |
-| CARD-05 | — | Pending |
-| CARD-06 | — | Pending |
-| CARD-07 | — | Pending |
-| CARD-08 | — | Pending |
-| CARD-09 | — | Pending |
-| CARD-10 | — | Pending |
-| CARD-11 | — | Pending |
-| EFCT-01 | — | Pending |
-| EFCT-02 | — | Pending |
-| EFCT-03 | — | Pending |
-| EFCT-04 | — | Pending |
-| EFCT-05 | — | Pending |
-| EFCT-06 | — | Pending |
-| EFCT-07 | — | Pending |
-| EFCT-08 | — | Pending |
-| EFCT-09 | — | Pending |
-| EFCT-10 | — | Pending |
-| GAME-01 | — | Pending |
-| GAME-02 | — | Pending |
-| GAME-03 | — | Pending |
+| PHYS-01 | Phase 1 | Pending |
+| PHYS-02 | Phase 1 | Pending |
+| PHYS-03 | Phase 1 | Pending |
+| PHYS-04 | Phase 1 | Pending |
+| PHYS-05 | Phase 1 | Pending |
+| PHYS-06 | Phase 1 | Pending |
+| PHYS-07 | Phase 1 | Pending |
+| PHYS-08 | Phase 1 | Pending |
+| SCOR-01 | Phase 2 | Pending |
+| SCOR-02 | Phase 2 | Pending |
+| SCOR-03 | Phase 3 | Pending |
+| SCOR-04 | Phase 3 | Pending |
+| SCOR-05 | Phase 8 | Pending |
+| CARD-01 | Phase 5 | Pending |
+| CARD-02 | Phase 5 | Pending |
+| CARD-03 | Phase 5 | Pending |
+| CARD-04 | Phase 5 | Pending |
+| CARD-05 | Phase 5 | Pending |
+| CARD-06 | Phase 5 | Pending |
+| CARD-07 | Phase 5 | Pending |
+| CARD-08 | Phase 5 | Pending |
+| CARD-09 | Phase 8 | Pending |
+| CARD-10 | Phase 5 | Pending |
+| CARD-11 | Phase 5 | Pending |
+| EFCT-01 | Phase 6 | Pending |
+| EFCT-02 | Phase 6 | Pending |
+| EFCT-03 | Phase 6 | Pending |
+| EFCT-04 | Phase 7 | Pending |
+| EFCT-05 | Phase 7 | Pending |
+| EFCT-06 | Phase 7 | Pending |
+| EFCT-07 | Phase 7 | Pending |
+| EFCT-08 | Phase 7 | Pending |
+| EFCT-09 | Phase 6 | Pending |
+| EFCT-10 | Phase 7 | Pending |
+| GAME-01 | Phase 4 | Pending |
+| GAME-02 | Phase 8 | Pending |
+| GAME-03 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 37 total
-- Mapped to phases: 0
-- Unmapped: 37
+- Mapped to phases: 37
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-07*
-*Last updated: 2026-02-07 after initial definition*
+*Last updated: 2026-02-07 after roadmap creation*
