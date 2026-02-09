@@ -7,7 +7,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	# Start in READY state, then transition to DROPPING after physics settles.
+	# Start in READY state, then show starter card pick.
 	GameManager.change_state(GameManager.GameState.READY)
 
 	# Connect game over signal.
@@ -17,8 +17,23 @@ func _ready() -> void:
 	EventBus.score_threshold_reached.connect(_on_score_threshold)
 	EventBus.shop_closed.connect(_on_shop_closed)
 
-	# Brief delay to let physics settle before enabling drops.
+	# Connect starter pick signal.
+	EventBus.starter_pick_completed.connect(_on_starter_pick_done)
+
+	# Brief delay to let physics settle, then show starter card pick.
 	await get_tree().create_timer(0.3).timeout
+	_show_starter_pick()
+
+
+func _show_starter_pick() -> void:
+	## Generate starter card offers and show the pick overlay.
+	var offers: Array = CardManager.generate_starter_offers(3)
+	GameManager.change_state(GameManager.GameState.PICKING)
+	EventBus.starter_pick_requested.emit(offers)
+
+
+func _on_starter_pick_done(_card: CardData) -> void:
+	## Resume gameplay after the player picks a starter card.
 	GameManager.change_state(GameManager.GameState.DROPPING)
 
 

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://starter_pick_scene"]
+
+[ext_resource type="Script" path="res://scenes/ui/starter_pick.gd" id="1_starter_pick"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 40
+font_color = Color(1, 1, 1, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_subtitle"]
+font_size = 20
+font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="StarterPick" type="CanvasLayer"]
+layer = 11
+process_mode = 3
+visible = false
+script = ExtResource("1_starter_pick")
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+mouse_filter = 0
+
+[node name="PickContainer" type="VBoxContainer" parent="Overlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -350.0
+offset_right = 300.0
+offset_bottom = 350.0
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="Overlay/PickContainer"]
+mouse_filter = 2
+horizontal_alignment = 1
+text = "Choose a Starting Card"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="SubtitleLabel" type="Label" parent="Overlay/PickContainer"]
+mouse_filter = 2
+horizontal_alignment = 1
+text = "Pick 1 card to begin your run"
+label_settings = SubResource("LabelSettings_subtitle")
+
+[node name="OffersContainer" type="VBoxContainer" parent="Overlay/PickContainer"]
+mouse_filter = 2
+theme_override_constants/separation = 16
