@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://card_shop_scene"]
+
+[ext_resource type="Script" path="res://scenes/ui/card_shop.gd" id="1_card_shop"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 48
+font_color = Color(1, 1, 1, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_section"]
+font_size = 20
+font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="CardShop" type="CanvasLayer"]
+layer = 11
+process_mode = 3
+visible = false
+script = ExtResource("1_card_shop")
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.6)
+mouse_filter = 0
+
+[node name="ShopContainer" type="VBoxContainer" parent="Overlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -450.0
+offset_right = 300.0
+offset_bottom = 450.0
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Overlay/ShopContainer"]
+mouse_filter = 2
+horizontal_alignment = 1
+text = "CARD SHOP"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="CoinLabel" type="Label" parent="Overlay/ShopContainer"]
+mouse_filter = 2
+horizontal_alignment = 1
+text = "Coins: 0"
+
+[node name="OffersLabel" type="Label" parent="Overlay/ShopContainer"]
+mouse_filter = 2
+horizontal_alignment = 1
+text = "Available Cards:"
+label_settings = SubResource("LabelSettings_section")
+
+[node name="OffersContainer" type="VBoxContainer" parent="Overlay/ShopContainer"]
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Divider" type="HSeparator" parent="Overlay/ShopContainer"]
+
+[node name="YourCardsLabel" type="Label" parent="Overlay/ShopContainer"]
+mouse_filter = 2
+horizontal_alignment = 1
+text = "Your Cards (tap to sell):"
+label_settings = SubResource("LabelSettings_section")
+
+[node name="SlotsContainer" type="HBoxContainer" parent="Overlay/ShopContainer"]
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="SkipButton" type="Button" parent="Overlay/ShopContainer"]
+custom_minimum_size = Vector2(200, 60)
+mouse_filter = 0
+text = "Continue"
