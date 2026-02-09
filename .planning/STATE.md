@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 4 complete. Pause/resume/restart and touch input verified. Ready for Phase 5 (Card System).
+**Current focus:** Phase 5 in progress. Card system data layer complete (Plan 01). Shop/pick UI and game flow next.
 
 ## Current Position
 
-Phase: 4 of 8 (Game Flow & Input) -- COMPLETE
-Plan: 1 of 1 in current phase (Phase 4 complete)
-Status: Phase 4 complete -- ready for Phase 5 research/planning
-Last activity: 2026-02-08 -- Phase 4 Plan 01 executed (2 tasks, pause menu + playtest)
+Phase: 5 of 8 (Card System Infrastructure)
+Plan: 1 of 3 in current phase (Plan 01 complete)
+Status: Plan 01 complete -- CardData, CardManager, GameManager states, CardSlotDisplay done
+Last activity: 2026-02-08 -- Phase 5 Plan 01 executed (2 tasks, card data layer + UI component)
 
-Progress: [█████░░░░░] 50%
+Progress: [██████░░░░] 56%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 6min
-- Total execution time: 0.8 hours
+- Total execution time: 0.9 hours
 
 **By Phase:**
 
@@ -31,10 +31,11 @@ Progress: [█████░░░░░] 50%
 | 02-scoring-chain-reactions | 2/2 | 7min | 3.5min |
 | 03-merge-feedback-juice | 2/2 | 23min | 11.5min |
 | 04-game-flow-input | 1/1 | 5min | 5min |
+| 05-card-system-infrastructure | 1/3 | 4min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (2min), 02-02 (5min), 03-01 (2min), 03-02 (21min), 04-01 (5min)
-- Trend: 04-01 back to normal duration after 03-02 playtest iteration
+- Last 5 plans: 02-02 (5min), 03-01 (2min), 03-02 (21min), 04-01 (5min), 05-01 (4min)
+- Trend: Consistent 4-5min for non-playtest plans
 
 *Updated after each plan completion*
 
@@ -77,6 +78,10 @@ Recent decisions affecting current work:
 - [04-01]: Overlay ColorRect mouse_filter=STOP blocks click-through; VBoxContainer mouse_filter=IGNORE
 - [04-01]: Restart unpauses tree BEFORE reload_current_scene (avoids loading into paused state)
 - [04-01]: TOUCH_PREVIEW_OFFSET=0.0 constant added but not applied (natural 80px gap sufficient)
+- [05-01]: active_cards stores {card, purchase_price} dictionaries for transparent sell-price refunds (50% of actual paid price)
+- [05-01]: SHOPPING and PICKING states extend PAUSED pattern (save _previous_state, pause tree, emit before pause)
+- [05-01]: Shop offers avoid duplicate card_ids via re-roll with max_attempts safety (count * 5)
+- [05-01]: CardManager autoload placed after SfxManager in project.godot (no cross-autoload _ready dependency)
 
 ### Pending Todos
 
@@ -90,5 +95,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 04-01-PLAN.md (pause menu, HUD pause button, playtest). Phase 4 complete. Ready for Phase 5 research.
+Stopped at: Completed 05-01-PLAN.md (CardData, CardManager, GameManager states, CardSlotDisplay). Ready for 05-02.
 Resume file: None
