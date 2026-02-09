@@ -58,7 +58,6 @@ func _on_shop_opened(offers: Array, _shop_level: int) -> void:
 		# Each offer is an HBoxContainer with a CardSlotDisplay and a Buy button.
 		var row: HBoxContainer = HBoxContainer.new()
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		row.theme_override_constants = {}
 		row.add_theme_constant_override("separation", 8)
 		row.alignment = BoxContainer.ALIGNMENT_CENTER
 
