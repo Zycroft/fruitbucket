@@ -21,6 +21,7 @@ script = ExtResource("5_game")
 
 [node name="ShakeCamera" type="Camera2D" parent="." groups=["shake_camera"]]
 position = Vector2(540, 960)
+enabled = true
 script = ExtResource("9_screen_shake")
 
 [node name="Bucket" parent="." groups=["bucket"] instance=ExtResource("2_bucket")]

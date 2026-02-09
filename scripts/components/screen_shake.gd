@@ -2,6 +2,7 @@ extends Camera2D
 ## Camera2D script with trauma-based FastNoiseLite shake.
 ## Add to group "shake_camera" for group-based discovery.
 ## Call add_trauma() to trigger shake; trauma decays smoothly each frame.
+## Uses position offset from base_position instead of Camera2D.offset for reliability.
 
 ## How quickly trauma decays per second.
 @export var decay: float = 0.6
@@ -14,10 +15,12 @@ var trauma: float = 0.0
 var trauma_power: int = 2
 var _noise: FastNoiseLite = FastNoiseLite.new()
 var _noise_y: float = 0.0
+var _base_position: Vector2
 
 
 func _ready() -> void:
 	add_to_group("shake_camera")
+	_base_position = position
 	_noise.seed = randi()
 	_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 	_noise.frequency = 0.5
@@ -32,13 +35,16 @@ func _process(delta: float) -> void:
 		trauma = maxf(trauma - decay * delta, 0.0)
 		_apply_shake()
 	else:
-		offset = Vector2.ZERO
+		position = _base_position
 		rotation = 0.0
 
 
 func _apply_shake() -> void:
 	var amount: float = pow(trauma, trauma_power)
 	_noise_y += 1.0
-	offset.x = max_offset.x * amount * _noise.get_noise_2d(float(_noise.seed), _noise_y)
-	offset.y = max_offset.y * amount * _noise.get_noise_2d(float(_noise.seed * 2), _noise_y)
-	rotation = max_roll * amount * _noise.get_noise_2d(float(_noise.seed * 3), _noise_y)
+	var noise_x: float = _noise.get_noise_2d(_noise_y, 0.0)
+	var noise_y: float = _noise.get_noise_2d(0.0, _noise_y)
+	var noise_r: float = _noise.get_noise_2d(_noise_y, _noise_y)
+	position.x = _base_position.x + max_offset.x * amount * noise_x
+	position.y = _base_position.y + max_offset.y * amount * noise_y
+	rotation = max_roll * amount * noise_r
