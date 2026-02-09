@@ -106,13 +106,15 @@ func get_buy_price(card: CardData) -> int:
 
 
 func get_sell_price(slot_index: int) -> int:
-	## Sell price is 50% of what the player actually paid (integer division).
+	## Sell price is 50% of what the player paid, floored to 50% of base price.
+	## Ensures free cards (e.g. starter pick) still have sell value.
 	if slot_index < 0 or slot_index >= active_cards.size():
 		return 0
 	var entry = active_cards[slot_index]
 	if entry == null:
 		return 0
-	return entry["purchase_price"] / 2
+	var card: CardData = entry["card"] as CardData
+	return maxi(entry["purchase_price"] / 2, card.base_price / 2)
 
 
 func generate_shop_offers(count: int = 3) -> Array[CardData]:
