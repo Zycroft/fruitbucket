@@ -4,11 +4,11 @@ extends Camera2D
 ## Call add_trauma() to trigger shake; trauma decays smoothly each frame.
 
 ## How quickly trauma decays per second.
-@export var decay: float = 0.8
+@export var decay: float = 0.6
 ## Maximum pixel offset for shake.
-@export var max_offset: Vector2 = Vector2(12, 8)
+@export var max_offset: Vector2 = Vector2(40, 25)
 ## Maximum rotation in radians for shake.
-@export var max_roll: float = 0.02
+@export var max_roll: float = 0.03
 
 var trauma: float = 0.0
 var trauma_power: int = 2

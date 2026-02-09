@@ -46,7 +46,7 @@ func _on_fruit_merged(old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 		tier_intensity = 1.0
 
 	_spawn_particles(merge_pos, new_tier, tier_intensity)
-	_trigger_shake(tier_intensity * 0.3)
+	_trigger_shake(tier_intensity * 0.6)
 	SfxManager.play_merge(new_tier, tier_intensity)
 
 	# Watermelon vanish: new_tier equals fruit count (beyond max index).
