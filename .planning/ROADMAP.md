@@ -107,11 +107,11 @@ Plans:
   2. Heavy Hitter gives the next 3 dropped fruits noticeably more mass, pushing existing fruits harder on contact, and the charge count decrements visibly
   3. Wild Fruit causes one random on-screen fruit to become wild (visually marked), and that fruit merges with same-tier OR adjacent-tier fruits on contact
   4. Cherry Bomb creates a visible outward push on nearby fruits when cherries merge, displacing the surrounding pile
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md -- CardEffectSystem scaffold, Bouncy Berry bounce effect, Cherry Bomb blast with shockwave (Wave 1)
+- [ ] 06-02-PLAN.md -- Heavy Hitter charge-based mass boost with HUD display, Wild Fruit periodic selection with rainbow shader and adjacent-tier merging (Wave 2)
 
 ### Phase 7: Card Effects -- Scoring & Economy
 **Goal**: Six card effects that modify score calculations and coin income, giving players strategic choices about optimizing points versus accumulating currency for better cards.
