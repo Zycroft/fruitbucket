@@ -76,10 +76,10 @@ Plans:
   1. Player can open a pause menu that freezes gameplay, and resume, restart, or quit from it
   2. Player can position and drop fruits using touch input on mobile with the same precision as mouse input on desktop (finger does not obscure the drop position)
   3. All gameplay interactions (drop, pause, shop navigation) work correctly on both desktop and mobile without requiring separate control schemes
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 04-01: TBD
+- [ ] 04-01-PLAN.md -- Pause menu, restart flow, HUD pause button, touch input verification (Wave 1)
 
 ### Phase 5: Card System Infrastructure
 **Goal**: The full card lifecycle works -- players pick a starter card, see active cards in the HUD, earn coins from merges, and spend them in a card shop that opens at score thresholds -- all resetting cleanly between runs.
