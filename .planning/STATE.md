@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 3 complete. All merge feedback wired. Ready for Phase 4 (Card System).
+**Current focus:** Phase 4 complete. Pause/resume/restart and touch input verified. Ready for Phase 5 (Card System).
 
 ## Current Position
 
-Phase: 3 of 8 (Merge Feedback & Juice) -- COMPLETE
-Plan: 2 of 2 in current phase (Phase 3 complete)
-Status: Phase 3 complete -- ready for Phase 4 research/planning
-Last activity: 2026-02-08 -- Phase 3 Plan 02 executed (2 tasks, MergeFeedback orchestrator + playtest)
+Phase: 4 of 8 (Game Flow & Input) -- COMPLETE
+Plan: 1 of 1 in current phase (Phase 4 complete)
+Status: Phase 4 complete -- ready for Phase 5 research/planning
+Last activity: 2026-02-08 -- Phase 4 Plan 01 executed (2 tasks, pause menu + playtest)
 
-Progress: [████░░░░░░] 38%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: 6min
-- Total execution time: 0.7 hours
+- Total execution time: 0.8 hours
 
 **By Phase:**
 
@@ -30,10 +30,11 @@ Progress: [████░░░░░░] 38%
 | 01-core-physics-merging | 3/3 | 12min | 4min |
 | 02-scoring-chain-reactions | 2/2 | 7min | 3.5min |
 | 03-merge-feedback-juice | 2/2 | 23min | 11.5min |
+| 04-game-flow-input | 1/1 | 5min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (4min), 02-01 (2min), 02-02 (5min), 03-01 (2min), 03-02 (21min)
-- Trend: 03-02 longer due to playtest iteration (screen shake fixes)
+- Last 5 plans: 02-01 (2min), 02-02 (5min), 03-01 (2min), 03-02 (21min), 04-01 (5min)
+- Trend: 04-01 back to normal duration after 03-02 playtest iteration
 
 *Updated after each plan completion*
 
@@ -71,6 +72,11 @@ Recent decisions affecting current work:
 - [03-02]: Screen shake uses position offset instead of Camera2D offset property for reliable shake in 1080x1920 viewport
 - [03-02]: Feedback orchestrator pattern: single MergeFeedback component connects EventBus and dispatches to particles, shake, SFX
 - [03-02]: Tier intensity scaling: clampf(float(new_tier) / 7.0, 0.1, 1.0) normalizes all feedback proportionally
+- [04-01]: Tree pause for PAUSED state; GAME_OVER does NOT pause tree (fruits settle naturally)
+- [04-01]: PauseMenu on CanvasLayer layer 10 with PROCESS_MODE_ALWAYS for input during pause
+- [04-01]: Overlay ColorRect mouse_filter=STOP blocks click-through; VBoxContainer mouse_filter=IGNORE
+- [04-01]: Restart unpauses tree BEFORE reload_current_scene (avoids loading into paused state)
+- [04-01]: TOUCH_PREVIEW_OFFSET=0.0 constant added but not applied (natural 80px gap sufficient)
 
 ### Pending Todos
 
@@ -84,5 +90,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 03-02-PLAN.md (MergeFeedback orchestrator + playtest). Phase 3 complete. Ready for Phase 4 research.
+Stopped at: Completed 04-01-PLAN.md (pause menu, HUD pause button, playtest). Phase 4 complete. Ready for Phase 5 research.
 Resume file: None
