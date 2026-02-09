@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://card_slot_display"]
+
+[ext_resource type="Script" path="res://scenes/ui/card_slot_display.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.15, 0.15, 0.2, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5, 0.5, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_name"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_desc"]
+font_size = 14
+
+[node name="CardSlotDisplay" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 120)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+script = ExtResource("1_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+mouse_filter = 2
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer"]
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="CardName" type="Label" parent="MarginContainer/Content"]
+mouse_filter = 2
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_name")
+
+[node name="Description" type="Label" parent="MarginContainer/Content"]
+custom_minimum_size = Vector2(0, 40)
+mouse_filter = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+label_settings = SubResource("LabelSettings_desc")
+
+[node name="PriceLabel" type="Label" parent="MarginContainer/Content"]
+visible = false
+mouse_filter = 2
+horizontal_alignment = 1
