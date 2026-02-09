@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://game_scene"]
+[gd_scene load_steps=14 format=3 uid="uid://game_scene"]
 
 [ext_resource type="PackedScene" path="res://scenes/background/background.tscn" id="1_background"]
 [ext_resource type="PackedScene" path="res://scenes/bucket/bucket.tscn" id="2_bucket"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/components/score_manager.gd" id="8_score_manager"]
 [ext_resource type="Script" path="res://scripts/components/screen_shake.gd" id="9_screen_shake"]
 [ext_resource type="Script" path="res://scripts/components/merge_feedback.gd" id="10_merge_feedback"]
+[ext_resource type="PackedScene" path="res://scenes/ui/card_shop.tscn" id="12_card_shop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_overflow"]
 size = Vector2(400, 20)
@@ -63,3 +64,5 @@ shape = SubResource("RectangleShape2D_overflow")
 [node name="HUD" parent="." instance=ExtResource("7_hud")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_pause_menu")]
+
+[node name="CardShop" parent="." instance=ExtResource("12_card_shop")]

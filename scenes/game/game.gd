@@ -13,6 +13,10 @@ func _ready() -> void:
 	# Connect game over signal.
 	EventBus.game_over_triggered.connect(_on_game_over)
 
+	# Connect card shop signals.
+	EventBus.score_threshold_reached.connect(_on_score_threshold)
+	EventBus.shop_closed.connect(_on_shop_closed)
+
 	# Brief delay to let physics settle before enabling drops.
 	await get_tree().create_timer(0.3).timeout
 	GameManager.change_state(GameManager.GameState.DROPPING)
@@ -20,3 +24,26 @@ func _ready() -> void:
 
 func _on_game_over() -> void:
 	GameManager.change_state(GameManager.GameState.GAME_OVER)
+
+
+func _on_score_threshold(_threshold: int) -> void:
+	## Open card shop when a score threshold is crossed.
+	# Only open if actively playing (not already in shop, paused, picking, or game over).
+	if GameManager.current_state != GameManager.GameState.DROPPING \
+			and GameManager.current_state != GameManager.GameState.WAITING:
+		return
+
+	# Generate offers and advance shop level.
+	var offers: Array = CardManager.generate_shop_offers()
+	CardManager.advance_shop_level()
+
+	# Transition to SHOPPING state (pauses tree).
+	GameManager.change_state(GameManager.GameState.SHOPPING)
+
+	# Open the shop overlay.
+	EventBus.shop_opened.emit(offers, CardManager._shop_level)
+
+
+func _on_shop_closed() -> void:
+	## Resume gameplay after the shop is closed.
+	GameManager.change_state(GameManager.GameState.DROPPING)

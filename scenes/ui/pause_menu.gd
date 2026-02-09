@@ -21,7 +21,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if GameManager.current_state == GameManager.GameState.PAUSED:
 			_on_resume_pressed()
 		elif GameManager.current_state != GameManager.GameState.GAME_OVER \
-				and GameManager.current_state != GameManager.GameState.PAUSED:
+				and GameManager.current_state != GameManager.GameState.PAUSED \
+				and GameManager.current_state != GameManager.GameState.SHOPPING \
+				and GameManager.current_state != GameManager.GameState.PICKING:
 			_on_pause_requested()
 		get_viewport().set_input_as_handled()
 

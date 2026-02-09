@@ -97,6 +97,15 @@ theme_override_font_sizes/font_size = 36
 text = "||"
 alignment = 1
 
+[node name="CardSlots" type="HBoxContainer" parent="."]
+offset_left = 90.0
+offset_top = 1750.0
+offset_right = 990.0
+offset_bottom = 1880.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
 [node name="GameOverLabel" type="Label" parent="."]
 mouse_filter = 2
 anchors_preset = 8

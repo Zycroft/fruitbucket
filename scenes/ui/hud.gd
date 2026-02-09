@@ -16,6 +16,12 @@ var _chain_tween: Tween = null
 ## Preloaded floating score popup scene.
 var _floating_score_scene: PackedScene = preload("res://scenes/ui/floating_score.tscn")
 
+## Preloaded card slot display scene for HUD card slots.
+var _card_slot_scene: PackedScene = preload("res://scenes/ui/card_slot_display.tscn")
+
+## Card slot display instances (3 total, display-only in HUD).
+var _card_slot_nodes: Array = []
+
 
 func _ready() -> void:
 	_load_fruit_types()
@@ -26,6 +32,9 @@ func _ready() -> void:
 	EventBus.coins_awarded.connect(_on_coins_awarded)
 	EventBus.game_state_changed.connect(_on_game_state_changed)
 	EventBus.next_fruit_changed.connect(_on_next_fruit_changed)
+	EventBus.card_purchased.connect(_on_card_purchased)
+	EventBus.card_sold.connect(_on_card_sold)
+	EventBus.active_cards_changed.connect(_on_active_cards_changed)
 
 	# Connect pause button.
 	$PauseButton.pressed.connect(_on_pause_button_pressed)
@@ -35,6 +44,14 @@ func _ready() -> void:
 	$CoinLabel.text = "Coins: %d" % GameManager.coins
 	$ChainLabel.visible = false
 	$GameOverLabel.visible = false
+
+	# Create 3 card slot displays in the CardSlots container.
+	for i in 3:
+		var slot_display: PanelContainer = _card_slot_scene.instantiate()
+		slot_display.custom_minimum_size = Vector2(280, 100)
+		$CardSlots.add_child(slot_display)
+		slot_display.display_empty()
+		_card_slot_nodes.append(slot_display)
 
 
 func _load_fruit_types() -> void:
@@ -181,6 +198,9 @@ func _on_game_state_changed(new_state: int) -> void:
 		$PauseButton.visible = false
 	elif new_state == GameManager.GameState.PAUSED:
 		$PauseButton.visible = false
+	elif new_state == GameManager.GameState.SHOPPING \
+			or new_state == GameManager.GameState.PICKING:
+		$PauseButton.visible = false
 	else:
 		$PauseButton.visible = true
 
@@ -188,3 +208,26 @@ func _on_game_state_changed(new_state: int) -> void:
 func _on_next_fruit_changed(tier: int) -> void:
 	## Called when DropController rolls a new next fruit tier.
 	update_next_fruit(tier)
+
+
+func _on_card_purchased(card: CardData, slot_index: int) -> void:
+	## Update HUD card slot when a card is purchased.
+	if slot_index >= 0 and slot_index < _card_slot_nodes.size():
+		_card_slot_nodes[slot_index].display_card(card)
+	$CoinLabel.text = "Coins: %d" % GameManager.coins
+
+
+func _on_card_sold(_card: CardData, slot_index: int, _refund: int) -> void:
+	## Clear HUD card slot when a card is sold.
+	if slot_index >= 0 and slot_index < _card_slot_nodes.size():
+		_card_slot_nodes[slot_index].display_empty()
+	$CoinLabel.text = "Coins: %d" % GameManager.coins
+
+
+func _on_active_cards_changed(cards: Array) -> void:
+	## Refresh all 3 HUD card slots from the active_cards array.
+	for i in mini(cards.size(), _card_slot_nodes.size()):
+		if cards[i] != null:
+			_card_slot_nodes[i].display_card(cards[i]["card"] as CardData)
+		else:
+			_card_slot_nodes[i].display_empty()
