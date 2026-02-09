@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 5 in progress. Card system data layer complete (Plan 01). Shop/pick UI and game flow next.
+**Current focus:** Phase 5 in progress. Plans 01-02 complete (data layer + shop/HUD). Starter pick and game flow next (Plan 03).
 
 ## Current Position
 
 Phase: 5 of 8 (Card System Infrastructure)
-Plan: 1 of 3 in current phase (Plan 01 complete)
-Status: Plan 01 complete -- CardData, CardManager, GameManager states, CardSlotDisplay done
-Last activity: 2026-02-08 -- Phase 5 Plan 01 executed (2 tasks, card data layer + UI component)
+Plan: 2 of 3 in current phase (Plan 02 complete)
+Status: Plan 02 complete -- Card shop overlay, HUD card slots, threshold-to-shop wiring done
+Last activity: 2026-02-08 -- Phase 5 Plan 02 executed (2 tasks, shop overlay + HUD/game wiring)
 
-Progress: [██████░░░░] 56%
+Progress: [███████░░░] 63%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: 6min
-- Total execution time: 0.9 hours
+- Total execution time: 0.95 hours
 
 **By Phase:**
 
@@ -31,11 +31,11 @@ Progress: [██████░░░░] 56%
 | 02-scoring-chain-reactions | 2/2 | 7min | 3.5min |
 | 03-merge-feedback-juice | 2/2 | 23min | 11.5min |
 | 04-game-flow-input | 1/1 | 5min | 5min |
-| 05-card-system-infrastructure | 1/3 | 4min | 4min |
+| 05-card-system-infrastructure | 2/3 | 7min | 3.5min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (5min), 03-01 (2min), 03-02 (21min), 04-01 (5min), 05-01 (4min)
-- Trend: Consistent 4-5min for non-playtest plans
+- Last 5 plans: 03-01 (2min), 03-02 (21min), 04-01 (5min), 05-01 (4min), 05-02 (3min)
+- Trend: Consistent 3-5min for non-playtest plans
 
 *Updated after each plan completion*
 
@@ -82,6 +82,10 @@ Recent decisions affecting current work:
 - [05-01]: SHOPPING and PICKING states extend PAUSED pattern (save _previous_state, pause tree, emit before pause)
 - [05-01]: Shop offers avoid duplicate card_ids via re-roll with max_attempts safety (count * 5)
 - [05-01]: CardManager autoload placed after SfxManager in project.godot (no cross-autoload _ready dependency)
+- [05-02]: Card shop on layer 11 (above PauseMenu layer 10) with process_mode ALWAYS for input during tree pause
+- [05-02]: Offer rows built dynamically as HBoxContainer with CardSlotDisplay + Buy button, cleaned up on close
+- [05-02]: Player slots use gui_input with bind(slot_index) for sell-on-tap in shop; HUD slots are display-only
+- [05-02]: PauseMenu Escape key guard extended for SHOPPING and PICKING states
 
 ### Pending Todos
 
@@ -95,5 +99,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 05-01-PLAN.md (CardData, CardManager, GameManager states, CardSlotDisplay). Ready for 05-02.
+Stopped at: Completed 05-02-PLAN.md (Card shop overlay, HUD card slots, threshold-to-shop wiring). Ready for 05-03.
 Resume file: None
