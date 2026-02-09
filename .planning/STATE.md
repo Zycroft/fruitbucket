@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 5 in progress. Plans 01-02 complete (data layer + shop/HUD). Starter pick and game flow next (Plan 03).
+**Current focus:** Phase 5 complete. Card system infrastructure fully operational (data, shop, starter pick, economy). Ready for Phase 6.
 
 ## Current Position
 
-Phase: 5 of 8 (Card System Infrastructure)
-Plan: 2 of 3 in current phase (Plan 02 complete)
-Status: Plan 02 complete -- Card shop overlay, HUD card slots, threshold-to-shop wiring done
-Last activity: 2026-02-08 -- Phase 5 Plan 02 executed (2 tasks, shop overlay + HUD/game wiring)
+Phase: 5 of 8 (Card System Infrastructure) -- COMPLETE
+Plan: 3 of 3 in current phase (all complete)
+Status: Phase 5 complete -- Full card lifecycle verified (pick -> play -> shop -> restart)
+Last activity: 2026-02-09 -- Phase 5 Plan 03 executed + 2 bug fixes + Playwright verification
 
-Progress: [███████░░░] 63%
+Progress: [██████████] 100% (Phase 5)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
+- Total plans completed: 11
 - Average duration: 6min
-- Total execution time: 0.95 hours
+- Total execution time: 1.0 hours
 
 **By Phase:**
 
@@ -31,10 +31,10 @@ Progress: [███████░░░] 63%
 | 02-scoring-chain-reactions | 2/2 | 7min | 3.5min |
 | 03-merge-feedback-juice | 2/2 | 23min | 11.5min |
 | 04-game-flow-input | 1/1 | 5min | 5min |
-| 05-card-system-infrastructure | 2/3 | 7min | 3.5min |
+| 05-card-system-infrastructure | 3/3 | 12min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (2min), 03-02 (21min), 04-01 (5min), 05-01 (4min), 05-02 (3min)
+- Last 5 plans: 03-02 (21min), 04-01 (5min), 05-01 (4min), 05-02 (3min), 05-03 (5min)
 - Trend: Consistent 3-5min for non-playtest plans
 
 *Updated after each plan completion*
@@ -86,6 +86,9 @@ Recent decisions affecting current work:
 - [05-02]: Offer rows built dynamically as HBoxContainer with CardSlotDisplay + Buy button, cleaned up on close
 - [05-02]: Player slots use gui_input with bind(slot_index) for sell-on-tap in shop; HUD slots are display-only
 - [05-02]: PauseMenu Escape key guard extended for SHOPPING and PICKING states
+- [05-03]: Starter pick overlay follows CardShop CanvasLayer pattern (layer 11, ALWAYS, visible=false)
+- [05-03]: PICKING state blocks all gameplay before card selection (tree paused)
+- [05-03]: Sell price uses maxi(purchase_price/2, base_price/2) so free cards always have sell value
 
 ### Pending Todos
 
@@ -95,9 +98,10 @@ None yet.
 
 - [Phase 1 resolved]: Physics stacking stable with solver_iterations=6, playtest confirmed 20+ fruit stacking without jitter
 - [Phase 1 lesson]: ColorRect/Control nodes default to mouse_filter=STOP — always set IGNORE on non-interactive UI elements
+- [Phase 5 lesson]: theme_override_constants is a .tscn serialization key, NOT a settable GDScript property — use add_theme_constant_override() in code
 
 ## Session Continuity
 
-Last session: 2026-02-08
-Stopped at: Completed 05-02-PLAN.md (Card shop overlay, HUD card slots, threshold-to-shop wiring). Ready for 05-03.
+Last session: 2026-02-09
+Stopped at: Phase 5 complete. Ready for Phase 6.
 Resume file: None

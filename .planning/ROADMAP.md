@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Scoring & Chain Reactions** - Points on merge with chain reaction multipliers
 - [x] **Phase 3: Merge Feedback & Juice** - Particles, screen shake, and escalating effects that make merging feel satisfying
 - [x] **Phase 4: Game Flow & Input** - Pause menu, restart, and dual-platform input (mouse + touch)
-- [ ] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle
+- [x] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle (completed 2026-02-09)
 - [ ] **Phase 6: Card Effects -- Physics & Merge** - Cards that modify physics properties and merge behavior
 - [ ] **Phase 7: Card Effects -- Scoring & Economy** - Cards that modify score multipliers and coin income
 - [ ] **Phase 8: Card Activation Feedback & Starter Kits** - Visual card triggers, starter card sets, and run summary screen
@@ -94,9 +94,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md -- CardData resource, 10 card definitions, CardManager autoload, GameManager states, EventBus signals, CardSlotDisplay component (Wave 1)
-- [ ] 05-02-PLAN.md -- Card shop overlay with buy/sell/skip, HUD card slots, score threshold-to-shop wiring (Wave 2)
-- [ ] 05-03-PLAN.md -- Starter card pick overlay, game flow integration, full lifecycle playtest (Wave 3)
+- [x] 05-01-PLAN.md -- CardData resource, 10 card definitions, CardManager autoload, GameManager states, EventBus signals, CardSlotDisplay component (Wave 1)
+- [x] 05-02-PLAN.md -- Card shop overlay with buy/sell/skip, HUD card slots, score threshold-to-shop wiring (Wave 2)
+- [x] 05-03-PLAN.md -- Starter card pick overlay, game flow integration, full lifecycle playtest (Wave 3)
 
 ### Phase 6: Card Effects -- Physics & Merge
 **Goal**: Four card effects that physically change how fruits behave -- bouncing, mass, merge rules, and collision forces -- demonstrating the card system's ability to modify the core physics loop.
@@ -156,7 +156,7 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 | 2. Scoring & Chain Reactions | 2/2 | ✓ Complete | 2026-02-08 |
 | 3. Merge Feedback & Juice | 2/2 | ✓ Complete | 2026-02-08 |
 | 4. Game Flow & Input | 1/1 | ✓ Complete | 2026-02-08 |
-| 5. Card System Infrastructure | 0/3 | Not started | - |
+| 5. Card System Infrastructure | 3/3 | ✓ Complete | 2026-02-09 |
 | 6. Card Effects -- Physics & Merge | 0/2 | Not started | - |
 | 7. Card Effects -- Scoring & Economy | 0/2 | Not started | - |
 | 8. Card Activation Feedback & Starter Kits | 0/2 | Not started | - |
