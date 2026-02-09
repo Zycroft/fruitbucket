@@ -79,7 +79,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 04-01-PLAN.md -- Pause menu, restart flow, HUD pause button, touch input verification (Wave 1)
+- [x] 04-01-PLAN.md -- Pause menu, restart flow, HUD pause button, touch input verification (Wave 1)
 
 ### Phase 5: Card System Infrastructure
 **Goal**: The full card lifecycle works -- players pick a starter card, see active cards in the HUD, earn coins from merges, and spend them in a card shop that opens at score thresholds -- all resetting cleanly between runs.
@@ -155,7 +155,7 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 | 1. Core Physics & Merging | 3/3 | ✓ Complete | 2026-02-08 |
 | 2. Scoring & Chain Reactions | 2/2 | ✓ Complete | 2026-02-08 |
 | 3. Merge Feedback & Juice | 2/2 | ✓ Complete | 2026-02-08 |
-| 4. Game Flow & Input | 0/1 | Not started | - |
+| 4. Game Flow & Input | 1/1 | ✓ Complete | 2026-02-08 |
 | 5. Card System Infrastructure | 0/3 | Not started | - |
 | 6. Card Effects -- Physics & Merge | 0/2 | Not started | - |
 | 7. Card Effects -- Scoring & Economy | 0/2 | Not started | - |
