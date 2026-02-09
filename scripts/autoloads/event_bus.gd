@@ -29,3 +29,9 @@ signal coins_awarded(new_coins: int, total_coins: int)
 
 ## Emitted when cumulative score crosses a milestone threshold (for Phase 5 shop triggers).
 signal score_threshold_reached(threshold: int)
+
+## Emitted by the HUD pause button to request a pause.
+signal pause_requested()
+
+## Emitted by the PauseMenu when the player resumes (for symmetry).
+signal resume_requested()

@@ -3,6 +3,11 @@ extends Node2D
 ## Handles player input for positioning and dropping fruits.
 ## Manages preview fruit, drop guide line, cooldown, and random tier selection.
 
+## Vertical offset for touch input to reduce finger occlusion. The natural
+## 80px gap above the bucket rim is expected to be sufficient; tune this if
+## playtest reveals the finger obscures the drop position on mobile.
+const TOUCH_PREVIEW_OFFSET: float = 0.0
+
 ## The fruit currently being positioned by the player (frozen above bucket).
 var _current_fruit: Fruit = null
 
@@ -65,6 +70,11 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if GameManager.current_state == GameManager.GameState.GAME_OVER:
+		return
+	# Belt-and-suspenders: get_tree().paused already stops _unhandled_input on
+	# PAUSABLE nodes, but this guard documents intent and protects against
+	# future process_mode changes.
+	if GameManager.current_state == GameManager.GameState.PAUSED:
 		return
 
 	if event is InputEventMouseMotion and _current_fruit:

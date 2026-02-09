@@ -27,6 +27,9 @@ func _ready() -> void:
 	EventBus.game_state_changed.connect(_on_game_state_changed)
 	EventBus.next_fruit_changed.connect(_on_next_fruit_changed)
 
+	# Connect pause button.
+	$PauseButton.pressed.connect(_on_pause_button_pressed)
+
 	# Initialize displays.
 	$ScoreLabel.text = "0"
 	$CoinLabel.text = "Coins: %d" % GameManager.coins
@@ -164,10 +167,22 @@ func update_next_fruit(tier: int) -> void:
 			$NextFruitPreview/NextFruitSprite.scale = Vector2(s, s)
 
 
+func _on_pause_button_pressed() -> void:
+	## Request pause via EventBus (PauseMenu listens and handles state change).
+	if GameManager.current_state == GameManager.GameState.GAME_OVER:
+		return
+	EventBus.pause_requested.emit()
+
+
 func _on_game_state_changed(new_state: int) -> void:
-	## Show game over label when entering GAME_OVER state.
+	## Update HUD elements based on game state changes.
 	if new_state == GameManager.GameState.GAME_OVER:
 		$GameOverLabel.visible = true
+		$PauseButton.visible = false
+	elif new_state == GameManager.GameState.PAUSED:
+		$PauseButton.visible = false
+	else:
+		$PauseButton.visible = true
 
 
 func _on_next_fruit_changed(tier: int) -> void:
