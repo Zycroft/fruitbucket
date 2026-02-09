@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Core Physics & Merging** - Droppable, stackable, mergeable fruits in a physics container with overflow detection (completed 2026-02-08)
 - [x] **Phase 2: Scoring & Chain Reactions** - Points on merge with chain reaction multipliers
-- [ ] **Phase 3: Merge Feedback & Juice** - Particles, screen shake, and escalating effects that make merging feel satisfying
+- [x] **Phase 3: Merge Feedback & Juice** - Particles, screen shake, and escalating effects that make merging feel satisfying
 - [ ] **Phase 4: Game Flow & Input** - Pause menu, restart, and dual-platform input (mouse + touch)
 - [ ] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle
 - [ ] **Phase 6: Card Effects -- Physics & Merge** - Cards that modify physics properties and merge behavior
@@ -65,8 +65,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md -- Screen shake Camera2D, SFX pool autoload, particle scene, placeholder audio (Wave 1)
-- [ ] 03-02-PLAN.md -- MergeFeedback orchestrator, game scene integration, chain escalation, playtest (Wave 2)
+- [x] 03-01-PLAN.md -- Screen shake Camera2D, SFX pool autoload, particle scene, placeholder audio (Wave 1)
+- [x] 03-02-PLAN.md -- MergeFeedback orchestrator, game scene integration, chain escalation, playtest (Wave 2)
 
 ### Phase 4: Game Flow & Input
 **Goal**: Players can pause, resume, restart, and quit mid-run, and the game works equally well with mouse/keyboard and touch input.
@@ -154,7 +154,7 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 |-------|----------------|--------|-----------|
 | 1. Core Physics & Merging | 3/3 | ✓ Complete | 2026-02-08 |
 | 2. Scoring & Chain Reactions | 2/2 | ✓ Complete | 2026-02-08 |
-| 3. Merge Feedback & Juice | 0/2 | Not started | - |
+| 3. Merge Feedback & Juice | 2/2 | ✓ Complete | 2026-02-08 |
 | 4. Game Flow & Input | 0/1 | Not started | - |
 | 5. Card System Infrastructure | 0/3 | Not started | - |
 | 6. Card Effects -- Physics & Merge | 0/2 | Not started | - |
