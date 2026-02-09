@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/card_data/card_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+card_id = "quick_fuse"
+card_name = "Quick Fuse"
+description = "Merges within 1s of previous merge grant +25% score"
+rarity = 0
+base_price = 8

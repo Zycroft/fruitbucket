@@ -8,6 +8,8 @@ enum GameState {
 	DROPPING,   ## A fruit is in mid-air after release
 	WAITING,    ## Cooldown between drops or processing merges
 	PAUSED,     ## Pause menu is open, tree is paused
+	SHOPPING,   ## Card shop is open, tree is paused
+	PICKING,    ## Starter card pick at run start, tree is paused
 	GAME_OVER,  ## Overflow detected, run is finished
 }
 
@@ -23,20 +25,21 @@ func change_state(new_state: GameState) -> void:
 	if current_state == new_state:
 		return
 
-	# When entering PAUSED, remember the state we came from.
-	if new_state == GameState.PAUSED:
+	# When entering PAUSED, SHOPPING, or PICKING, remember the state we came from.
+	if new_state in [GameState.PAUSED, GameState.SHOPPING, GameState.PICKING]:
 		_previous_state = current_state
 
-	# When leaving PAUSED, unpause the tree.
-	if current_state == GameState.PAUSED and new_state != GameState.PAUSED:
-		get_tree().paused = false
+	# When leaving PAUSED, SHOPPING, or PICKING, unpause the tree.
+	if current_state in [GameState.PAUSED, GameState.SHOPPING, GameState.PICKING]:
+		if new_state not in [GameState.PAUSED, GameState.SHOPPING, GameState.PICKING]:
+			get_tree().paused = false
 
 	current_state = new_state
 	EventBus.game_state_changed.emit(new_state)
 
-	# When entering PAUSED, pause the tree (after emitting signal so listeners
-	# with process_mode ALWAYS can react to the state change).
-	if new_state == GameState.PAUSED:
+	# When entering PAUSED, SHOPPING, or PICKING, pause the tree (after emitting
+	# signal so listeners with process_mode ALWAYS can react to the state change).
+	if new_state in [GameState.PAUSED, GameState.SHOPPING, GameState.PICKING]:
 		get_tree().paused = true
 
 
@@ -47,4 +50,5 @@ func reset_game() -> void:
 	_previous_state = GameState.READY
 	score = 0
 	coins = 0
+	CardManager.reset()
 	change_state(GameState.READY)

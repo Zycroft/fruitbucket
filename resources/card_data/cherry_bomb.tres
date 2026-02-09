@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/card_data/card_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+card_id = "cherry_bomb"
+card_name = "Cherry Bomb"
+description = "When cherries merge, push nearby fruits outward"
+rarity = 0
+base_price = 8

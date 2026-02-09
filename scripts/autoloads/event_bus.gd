@@ -35,3 +35,24 @@ signal pause_requested()
 
 ## Emitted by the PauseMenu when the player resumes (for symmetry).
 signal resume_requested()
+
+## Emitted when the starter card pick UI should appear.
+signal starter_pick_requested(offers: Array)
+
+## Emitted when the player picks a starter card.
+signal starter_pick_completed(card: CardData)
+
+## Emitted when the card shop should open.
+signal shop_opened(offers: Array, shop_level: int)
+
+## Emitted when the player closes the shop (buy, skip, or sell).
+signal shop_closed()
+
+## Emitted when a card is purchased and added to a slot.
+signal card_purchased(card: CardData, slot_index: int)
+
+## Emitted when a card is sold from a slot.
+signal card_sold(card: CardData, slot_index: int, refund: int)
+
+## Emitted when active cards change (purchase, sell, or reset).
+signal active_cards_changed(cards: Array)
