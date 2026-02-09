@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Core Physics & Merging** - Droppable, stackable, mergeable fruits in a physics container with overflow detection (completed 2026-02-08)
 - [x] **Phase 2: Scoring & Chain Reactions** - Points on merge with chain reaction multipliers
 - [x] **Phase 3: Merge Feedback & Juice** - Particles, screen shake, and escalating effects that make merging feel satisfying
-- [ ] **Phase 4: Game Flow & Input** - Pause menu, restart, and dual-platform input (mouse + touch)
+- [x] **Phase 4: Game Flow & Input** - Pause menu, restart, and dual-platform input (mouse + touch)
 - [ ] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle
 - [ ] **Phase 6: Card Effects -- Physics & Merge** - Cards that modify physics properties and merge behavior
 - [ ] **Phase 7: Card Effects -- Scoring & Economy** - Cards that modify score multipliers and coin income
@@ -91,12 +91,12 @@ Plans:
   3. Player can buy cards (if they have enough coins and an open slot), sell owned cards for 50% of purchase price, or skip the shop to resume play
   4. Card rarity (Common, Uncommon, Rare) affects shop prices and appearance frequency, with rare cards appearing more in later shops and prices increasing as the run progresses
   5. All cards, coins, and shop state reset completely when a new run starts -- nothing persists between runs
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
-- [ ] 05-03: TBD
+- [ ] 05-01-PLAN.md -- CardData resource, 10 card definitions, CardManager autoload, GameManager states, EventBus signals, CardSlotDisplay component (Wave 1)
+- [ ] 05-02-PLAN.md -- Card shop overlay with buy/sell/skip, HUD card slots, score threshold-to-shop wiring (Wave 2)
+- [ ] 05-03-PLAN.md -- Starter card pick overlay, game flow integration, full lifecycle playtest (Wave 3)
 
 ### Phase 6: Card Effects -- Physics & Merge
 **Goal**: Four card effects that physically change how fruits behave -- bouncing, mass, merge rules, and collision forces -- demonstrating the card system's ability to modify the core physics loop.
