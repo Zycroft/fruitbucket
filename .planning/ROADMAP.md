@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Merge Feedback & Juice** - Particles, screen shake, and escalating effects that make merging feel satisfying
 - [x] **Phase 4: Game Flow & Input** - Pause menu, restart, and dual-platform input (mouse + touch)
 - [x] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle (completed 2026-02-09)
-- [ ] **Phase 6: Card Effects -- Physics & Merge** - Cards that modify physics properties and merge behavior
+- [x] **Phase 6: Card Effects -- Physics & Merge** - Cards that modify physics properties and merge behavior (completed 2026-02-09)
 - [ ] **Phase 7: Card Effects -- Scoring & Economy** - Cards that modify score multipliers and coin income
 - [ ] **Phase 8: Card Activation Feedback & Starter Kits** - Visual card triggers, starter card sets, and run summary screen
 
@@ -110,8 +110,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md -- CardEffectSystem scaffold, Bouncy Berry bounce effect, Cherry Bomb blast with shockwave (Wave 1)
-- [ ] 06-02-PLAN.md -- Heavy Hitter charge-based mass boost with HUD display, Wild Fruit periodic selection with rainbow shader and adjacent-tier merging (Wave 2)
+- [x] 06-01-PLAN.md -- CardEffectSystem scaffold, Bouncy Berry bounce effect, Cherry Bomb blast with shockwave (Wave 1)
+- [x] 06-02-PLAN.md -- Heavy Hitter charge-based mass boost with HUD display, Wild Fruit periodic selection with rainbow shader and adjacent-tier merging (Wave 2)
 
 ### Phase 7: Card Effects -- Scoring & Economy
 **Goal**: Six card effects that modify score calculations and coin income, giving players strategic choices about optimizing points versus accumulating currency for better cards.
@@ -157,6 +157,6 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 | 3. Merge Feedback & Juice | 2/2 | ✓ Complete | 2026-02-08 |
 | 4. Game Flow & Input | 1/1 | ✓ Complete | 2026-02-08 |
 | 5. Card System Infrastructure | 3/3 | ✓ Complete | 2026-02-09 |
-| 6. Card Effects -- Physics & Merge | 0/2 | Not started | - |
+| 6. Card Effects -- Physics & Merge | 2/2 | ✓ Complete | 2026-02-09 |
 | 7. Card Effects -- Scoring & Economy | 0/2 | Not started | - |
 | 8. Card Activation Feedback & Starter Kits | 0/2 | Not started | - |
