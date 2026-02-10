@@ -35,6 +35,7 @@ func _ready() -> void:
 	EventBus.card_purchased.connect(_on_card_purchased)
 	EventBus.card_sold.connect(_on_card_sold)
 	EventBus.active_cards_changed.connect(_on_active_cards_changed)
+	EventBus.heavy_hitter_charges_changed.connect(_on_heavy_hitter_charges_changed)
 
 	# Connect pause button.
 	$PauseButton.pressed.connect(_on_pause_button_pressed)
@@ -231,3 +232,17 @@ func _on_active_cards_changed(cards: Array) -> void:
 			_card_slot_nodes[i].display_card(cards[i]["card"] as CardData)
 		else:
 			_card_slot_nodes[i].display_empty()
+
+
+func _on_heavy_hitter_charges_changed(charges: int, max_charges: int) -> void:
+	## Update the HUD card slot that holds Heavy Hitter with charge count display.
+	if max_charges <= 0:
+		# Card removed -- clear status on all slots.
+		for slot in _card_slot_nodes:
+			slot.clear_status_text()
+		return
+	# Find which slot holds Heavy Hitter and update its status text.
+	for i in mini(CardManager.active_cards.size(), _card_slot_nodes.size()):
+		var entry = CardManager.active_cards[i]
+		if entry != null and (entry["card"] as CardData).card_id == "heavy_hitter":
+			_card_slot_nodes[i].set_status_text("%d/%d" % [charges, max_charges])

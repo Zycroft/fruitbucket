@@ -63,6 +63,9 @@ func _ready() -> void:
 	_drop_guide.width = 1.5
 	_drop_guide.visible = false
 
+	# Listen for Heavy Hitter charge changes to update preview visual.
+	EventBus.heavy_hitter_charges_changed.connect(_on_heavy_charges_changed)
+
 	# Roll the first tier and spawn the preview fruit.
 	_roll_next_tier()
 	_spawn_preview()
@@ -121,6 +124,9 @@ func _spawn_preview() -> void:
 		true  # dropping = true (frozen for positioning)
 	)
 
+	# Apply Heavy Hitter preview visual if charges are available.
+	_apply_heavy_preview()
+
 	# Show and position the drop guide.
 	_drop_guide.visible = true
 	_drop_guide.clear_points()
@@ -129,6 +135,24 @@ func _spawn_preview() -> void:
 
 	# Roll the tier for the NEXT drop.
 	_roll_next_tier()
+
+
+func _apply_heavy_preview() -> void:
+	## Darken preview fruit if Heavy Hitter has charges, restore if not.
+	if not _current_fruit or not is_instance_valid(_current_fruit):
+		return
+	var effect_system: CardEffectSystem = get_tree().get_first_node_in_group("card_effect_system")
+	if effect_system and effect_system.has_heavy_charges():
+		_current_fruit.is_heavy = true
+		_current_fruit.get_node("Sprite2D").modulate = _current_fruit.fruit_data.color.darkened(0.3)
+	else:
+		_current_fruit.is_heavy = false
+		_current_fruit.get_node("Sprite2D").modulate = _current_fruit.fruit_data.color
+
+
+func _on_heavy_charges_changed(_charges: int, _max_charges: int) -> void:
+	## Update preview fruit visual when Heavy Hitter charges change.
+	_apply_heavy_preview()
 
 
 func _roll_next_tier() -> void:

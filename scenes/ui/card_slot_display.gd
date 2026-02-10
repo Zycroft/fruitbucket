@@ -47,3 +47,18 @@ func set_sell_mode(sell_price: int) -> void:
 	## Show sell price on the card (used by shop for owned cards).
 	$MarginContainer/Content/PriceLabel.visible = true
 	$MarginContainer/Content/PriceLabel.text = "Sell: %d coins" % sell_price
+
+
+func set_status_text(text: String) -> void:
+	## Show a status overlay on the card slot (e.g., charge count "3/3").
+	## Reuses PriceLabel which is hidden in HUD display-only mode.
+	if text.is_empty():
+		$MarginContainer/Content/PriceLabel.visible = false
+	else:
+		$MarginContainer/Content/PriceLabel.visible = true
+		$MarginContainer/Content/PriceLabel.text = text
+
+
+func clear_status_text() -> void:
+	## Hide the status overlay.
+	$MarginContainer/Content/PriceLabel.visible = false
