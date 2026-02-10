@@ -57,8 +57,20 @@ func request_merge(fruit_a: Fruit, fruit_b: Fruit) -> void:
 
 	# Calculate merge position (midpoint of both fruits).
 	var merge_pos: Vector2 = (fruit_a.global_position + fruit_b.global_position) / 2.0
-	var old_tier: int = fruit_a.fruit_data.tier
-	var new_tier: int = old_tier + 1
+	var tier_a: int = fruit_a.fruit_data.tier
+	var tier_b: int = fruit_b.fruit_data.tier
+	var is_wild_merge: bool = fruit_a.is_wild or fruit_b.is_wild
+	var old_tier: int
+	var new_tier: int
+
+	if is_wild_merge and tier_a != tier_b:
+		# Wild merge with adjacent tier: result is max(tier_a, tier_b) + 1 (generous upgrade).
+		old_tier = maxi(tier_a, tier_b)
+		new_tier = old_tier + 1
+	else:
+		# Standard merge: both fruits are same tier.
+		old_tier = tier_a
+		new_tier = old_tier + 1
 
 	# Safely deactivate both fruits (no queue_free in physics callback).
 	_deactivate_fruit(fruit_a)
