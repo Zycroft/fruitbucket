@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 6 in progress. Card effects runtime system with Bouncy Berry and Cherry Bomb implemented. Heavy Hitter and Wild Fruit next.
+**Current focus:** Phase 6 complete. All 4 card effects (Bouncy Berry, Cherry Bomb, Heavy Hitter, Wild Fruit) implemented. Ready for Phase 7.
 
 ## Current Position
 
-Phase: 6 of 8 (Card Effects -- Physics & Merge)
-Plan: 1 of 2 in current phase (Plan 01 complete)
-Status: Plan 01 complete -- CardEffectSystem + Bouncy Berry + Cherry Bomb effects implemented
-Last activity: 2026-02-09 -- Phase 6 Plan 01 executed
+Phase: 6 of 8 (Card Effects -- Physics & Merge) -- COMPLETE
+Plan: 2 of 2 in current phase (Phase 6 complete)
+Status: Phase 6 complete -- all 4 card effects operational with charge/recharge, wild selection, and HUD integration
+Last activity: 2026-02-09 -- Phase 6 Plan 02 executed
 
-Progress: [████████░░] 80% (Phase 6 Plan 1/2)
+Progress: [████████░░] 85% (Phase 6 complete, Phase 7 next)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
+- Total plans completed: 13
 - Average duration: 5min
-- Total execution time: 1.05 hours
+- Total execution time: 1.1 hours
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [████████░░] 80% (Phase 6 Plan 1/2)
 | 03-merge-feedback-juice | 2/2 | 23min | 11.5min |
 | 04-game-flow-input | 1/1 | 5min | 5min |
 | 05-card-system-infrastructure | 3/3 | 12min | 4min |
-| 06-card-effects-physics-merge | 1/2 | 3min | 3min |
+| 06-card-effects-physics-merge | 2/2 | 6min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (5min), 05-01 (4min), 05-02 (3min), 05-03 (5min), 06-01 (3min)
+- Last 5 plans: 05-01 (4min), 05-02 (3min), 05-03 (5min), 06-01 (3min), 06-02 (3min)
 - Trend: Consistent 3-5min for non-playtest plans
 
 *Updated after each plan completion*
@@ -95,6 +95,10 @@ Recent decisions affecting current work:
 - [06-01]: Bounce always calculated from base (0.15) + bonus*N, never from current value, preventing exponential stacking
 - [06-01]: Cherry Bomb triggers on old_tier == 2 (0-indexed, matching tier_3_cherry.tres)
 - [06-01]: Shockwave ring via Line2D circle + tween, no separate .tscn needed
+- [06-02]: Heavy Hitter targets last FruitContainer child as just-dropped fruit for reliable mass boost
+- [06-02]: Wild merge old_tier uses maxi(tier_a, tier_b) so ScoreManager rewards the higher tier
+- [06-02]: Wild Fruit selection triggered by merge counter (every 5 merges) for predictable timing
+- [06-02]: CardSlotDisplay PriceLabel reused for charge status text in HUD mode (no new UI nodes)
 
 ### Pending Todos
 
@@ -109,5 +113,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 06-01-PLAN.md. CardEffectSystem + Bouncy Berry + Cherry Bomb done. Plan 02 (Heavy Hitter + Wild Fruit) next.
+Stopped at: Completed 06-02-PLAN.md. Phase 6 complete -- all 4 card effects operational. Phase 7 (Scoring/Economy card effects) next.
 Resume file: None
