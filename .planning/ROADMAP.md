@@ -122,11 +122,11 @@ Plans:
   2. Big Game Hunter awards noticeably more points for tier 7+ merges compared to the base score
   3. Golden Touch and Lucky Break visibly increase coin income (Golden Touch adds per-merge coins, Lucky Break occasionally drops bonus coin pickups)
   4. Pineapple Express awards a visible bonus of +20 coins and +100 score specifically when a pineapple is created from merging
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
+- [ ] 07-01-PLAN.md -- Score bonus effects infrastructure + Quick Fuse, Fruit Frenzy, Big Game Hunter with colored bonus popups (Wave 1)
+- [ ] 07-02-PLAN.md -- Golden Touch, Lucky Break, Pineapple Express coin/mixed effects with complete dispatcher (Wave 2)
 
 ### Phase 8: Card Activation Feedback & Starter Kits
 **Goal**: Players see when their cards trigger during gameplay, can choose from distinct starter card sets that shape early strategy, and see a comprehensive run summary at game over.
