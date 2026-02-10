@@ -15,6 +15,12 @@ var is_dropping: bool = false
 ## True briefly after this fruit spawns from a merge, preventing immediate re-merge.
 var merge_grace: bool = false
 
+## Wild fruit flag -- wild fruits can merge with adjacent tiers (tier +/- 1).
+var is_wild: bool = false
+
+## Heavy hitter flag -- marks a fruit that was dropped with extra mass.
+var is_heavy: bool = false
+
 
 func initialize(data: FruitData) -> void:
 	## Configure this fruit from a FruitData resource.
@@ -51,7 +57,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	if merge_grace or body.merge_grace:
 		return
-	if body.fruit_data.tier != fruit_data.tier:
+	if not _can_merge_with(body):
 		return
 
 	# Deterministic tiebreaker: only the lower instance ID initiates the merge.
@@ -60,3 +66,13 @@ func _on_body_entered(body: Node) -> void:
 		var mm = get_tree().get_first_node_in_group("merge_manager")
 		if mm:
 			mm.request_merge(self, body)
+
+
+func _can_merge_with(other: Fruit) -> bool:
+	## Check if this fruit can merge with another.
+	## Standard: same tier. Wild: same OR adjacent tier (+/- 1).
+	if fruit_data.tier == other.fruit_data.tier:
+		return true
+	if is_wild or other.is_wild:
+		return abs(fruit_data.tier - other.fruit_data.tier) <= 1
+	return false

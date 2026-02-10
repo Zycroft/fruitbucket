@@ -56,3 +56,15 @@ signal card_sold(card: CardData, slot_index: int, refund: int)
 
 ## Emitted when active cards change (purchase, sell, or reset).
 signal active_cards_changed(cards: Array)
+
+## Emitted when Heavy Hitter charges change (for HUD charge display).
+signal heavy_hitter_charges_changed(charges: int, max_charges: int)
+
+## Emitted when a fruit becomes wild (for visual feedback coordination).
+signal wild_fruit_marked(fruit: RigidBody2D)
+
+## Emitted when a wild fruit merges or is removed (for cleanup coordination).
+signal wild_fruit_unmarked(fruit: RigidBody2D)
+
+## Emitted when Cherry Bomb triggers (for visual feedback coordination).
+signal cherry_bomb_triggered(position: Vector2)

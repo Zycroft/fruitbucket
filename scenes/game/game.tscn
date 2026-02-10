@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://game_scene"]
+[gd_scene load_steps=16 format=3 uid="uid://game_scene"]
 
 [ext_resource type="PackedScene" path="res://scenes/background/background.tscn" id="1_background"]
 [ext_resource type="PackedScene" path="res://scenes/bucket/bucket.tscn" id="2_bucket"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/components/merge_feedback.gd" id="10_merge_feedback"]
 [ext_resource type="PackedScene" path="res://scenes/ui/card_shop.tscn" id="12_card_shop"]
 [ext_resource type="PackedScene" path="res://scenes/ui/starter_pick.tscn" id="13_starter_pick"]
+[ext_resource type="Script" path="res://scripts/components/card_effect_system.gd" id="14_card_effect_system"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_overflow"]
 size = Vector2(400, 20)
@@ -43,6 +44,9 @@ script = ExtResource("8_score_manager")
 
 [node name="MergeFeedback" type="Node" parent="." groups=["merge_feedback"]]
 script = ExtResource("10_merge_feedback")
+
+[node name="CardEffectSystem" type="Node" parent="." groups=["card_effect_system"]]
+script = ExtResource("14_card_effect_system")
 
 [node name="DropController" type="Node2D" parent="."]
 script = ExtResource("4_drop_controller")
