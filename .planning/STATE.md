@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 5 complete. Card system infrastructure fully operational (data, shop, starter pick, economy). Ready for Phase 6.
+**Current focus:** Phase 6 in progress. Card effects runtime system with Bouncy Berry and Cherry Bomb implemented. Heavy Hitter and Wild Fruit next.
 
 ## Current Position
 
-Phase: 5 of 8 (Card System Infrastructure) -- COMPLETE
-Plan: 3 of 3 in current phase (all complete)
-Status: Phase 5 complete -- Full card lifecycle verified (pick -> play -> shop -> restart)
-Last activity: 2026-02-09 -- Phase 5 Plan 03 executed + 2 bug fixes + Playwright verification
+Phase: 6 of 8 (Card Effects -- Physics & Merge)
+Plan: 1 of 2 in current phase (Plan 01 complete)
+Status: Plan 01 complete -- CardEffectSystem + Bouncy Berry + Cherry Bomb effects implemented
+Last activity: 2026-02-09 -- Phase 6 Plan 01 executed
 
-Progress: [██████████] 100% (Phase 5)
+Progress: [████████░░] 80% (Phase 6 Plan 1/2)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
-- Average duration: 6min
-- Total execution time: 1.0 hours
+- Total plans completed: 12
+- Average duration: 5min
+- Total execution time: 1.05 hours
 
 **By Phase:**
 
@@ -32,9 +32,10 @@ Progress: [██████████] 100% (Phase 5)
 | 03-merge-feedback-juice | 2/2 | 23min | 11.5min |
 | 04-game-flow-input | 1/1 | 5min | 5min |
 | 05-card-system-infrastructure | 3/3 | 12min | 4min |
+| 06-card-effects-physics-merge | 1/2 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 03-02 (21min), 04-01 (5min), 05-01 (4min), 05-02 (3min), 05-03 (5min)
+- Last 5 plans: 04-01 (5min), 05-01 (4min), 05-02 (3min), 05-03 (5min), 06-01 (3min)
 - Trend: Consistent 3-5min for non-playtest plans
 
 *Updated after each plan completion*
@@ -89,6 +90,11 @@ Recent decisions affecting current work:
 - [05-03]: Starter pick overlay follows CardShop CanvasLayer pattern (layer 11, ALWAYS, visible=false)
 - [05-03]: PICKING state blocks all gameplay before card selection (tree paused)
 - [05-03]: Sell price uses maxi(purchase_price/2, base_price/2) so free cards always have sell value
+- [06-01]: CardEffectSystem as scene-local Node (not autoload) for automatic cleanup on scene reload
+- [06-01]: Per-fruit PhysicsMaterial.new() to avoid shared resource mutation -- matches CircleShape2D pattern from Phase 1
+- [06-01]: Bounce always calculated from base (0.15) + bonus*N, never from current value, preventing exponential stacking
+- [06-01]: Cherry Bomb triggers on old_tier == 2 (0-indexed, matching tier_3_cherry.tres)
+- [06-01]: Shockwave ring via Line2D circle + tween, no separate .tscn needed
 
 ### Pending Todos
 
@@ -103,5 +109,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Phase 5 complete. Ready for Phase 6.
+Stopped at: Completed 06-01-PLAN.md. CardEffectSystem + Bouncy Berry + Cherry Bomb done. Plan 02 (Heavy Hitter + Wild Fruit) next.
 Resume file: None
