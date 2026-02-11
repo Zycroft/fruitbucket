@@ -48,6 +48,18 @@ const FRUIT_FRENZY_MIN_CHAIN: int = 3
 const BIG_GAME_BONUS: float = 0.5
 const BIG_GAME_MIN_TIER: int = 6
 
+# --- Coin/Mixed effect constants ---
+## Golden Touch: flat +2 coins per card per merge.
+const GOLDEN_TOUCH_COINS: int = 2
+## Lucky Break: 15% independent chance per card to award bonus coins.
+const LUCKY_BREAK_CHANCE: float = 0.15
+const LUCKY_BREAK_COINS: int = 5
+## Pineapple Express: triggers when Pear (code tier 6) is created.
+## Mapped from "pineapple" since no pineapple tier exists (per research recommendation).
+const PINEAPPLE_TIER: int = 6
+const PINEAPPLE_BONUS_SCORE: int = 100
+const PINEAPPLE_BONUS_COINS: int = 20
+
 ## Shared default physics material to restore non-bouncy fruits.
 var _default_physics_material: PhysicsMaterial = preload("res://resources/fruit_physics.tres")
 
@@ -357,17 +369,70 @@ func _apply_big_game_hunter(new_tier: int) -> int:
 	return int(_get_base_score(new_tier) * BIG_GAME_BONUS * count)
 
 
+func _apply_golden_touch() -> int:
+	## Golden Touch: +2 coins per card per merge (flat, unconditional).
+	var count: int = _count_active("golden_touch")
+	if count <= 0:
+		return 0
+	return GOLDEN_TOUCH_COINS * count
+
+
+func _apply_lucky_break() -> int:
+	## Lucky Break: 15% independent chance per card for +5 bonus coins.
+	## Each card rolls independently -- 2 cards can both trigger for 10 coins.
+	var count: int = _count_active("lucky_break")
+	if count <= 0:
+		return 0
+	var total_coins: int = 0
+	for i in count:
+		if randf() < LUCKY_BREAK_CHANCE:
+			total_coins += LUCKY_BREAK_COINS
+	return total_coins
+
+
+func _apply_pineapple_express(new_tier: int) -> Dictionary:
+	## Pineapple Express: +100 score and +20 coins when Pear is created.
+	## Returns {"score": int, "coins": int}.
+	var count: int = _count_active("pineapple_express")
+	if count <= 0:
+		return {"score": 0, "coins": 0}
+	if new_tier != PINEAPPLE_TIER:
+		return {"score": 0, "coins": 0}
+	return {
+		"score": PINEAPPLE_BONUS_SCORE * count,
+		"coins": PINEAPPLE_BONUS_COINS * count,
+	}
+
+
 func _apply_scoring_effects(_old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 	## Compute and apply all scoring/economy card bonuses for this merge.
 	var bonus_score: int = 0
+	var bonus_coins: int = 0
 
+	# Score bonuses (Plan 01)
 	bonus_score += _apply_quick_fuse(new_tier)
 	bonus_score += _apply_fruit_frenzy(new_tier)
 	bonus_score += _apply_big_game_hunter(new_tier)
 
+	# Coin bonuses (Plan 02)
+	bonus_coins += _apply_golden_touch()
+	bonus_coins += _apply_lucky_break()
+
+	# Mixed bonus (Plan 02)
+	var pineapple: Dictionary = _apply_pineapple_express(new_tier)
+	bonus_score += pineapple["score"]
+	bonus_coins += pineapple["coins"]
+
+	# Apply score bonus
 	if bonus_score > 0:
 		GameManager.score += bonus_score
 		EventBus.bonus_awarded.emit(bonus_score, merge_pos, "score")
+
+	# Apply coin bonus -- emit coins_awarded so HUD updates automatically
+	if bonus_coins > 0:
+		GameManager.coins += bonus_coins
+		EventBus.coins_awarded.emit(bonus_coins, GameManager.coins)
+		EventBus.bonus_awarded.emit(bonus_coins, merge_pos, "coins")
 
 
 # =============================================================================
