@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 7 in progress. Scoring card effects (Quick Fuse, Fruit Frenzy, Big Game Hunter) implemented. Plan 02 (coin/mixed effects) next.
+**Current focus:** Phase 7 complete. All 6 scoring/economy card effects operational. Ready for Phase 8 (polish and balance).
 
 ## Current Position
 
-Phase: 7 of 8 (Card Effects -- Scoring & Economy)
-Plan: 1 of 2 in current phase (Plan 01 complete)
-Status: Phase 7 Plan 01 complete -- three scoring card effects with bonus popup system operational
-Last activity: 2026-02-11 -- Phase 7 Plan 01 executed
+Phase: 7 of 8 (Card Effects -- Scoring & Economy) -- COMPLETE
+Plan: 2 of 2 in current phase (Phase 7 complete)
+Status: Phase 7 complete -- all 6 scoring/economy card effects operational
+Last activity: 2026-02-11 -- Phase 7 Plan 02 executed
 
-Progress: [█████████░] 90% (Phase 7 Plan 01 complete, Plan 02 next)
+Progress: [██████████] 95% (Phase 7 complete, Phase 8 next)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: 5min
-- Total execution time: 1.13 hours
+- Total execution time: 1.15 hours
 
 **By Phase:**
 
@@ -33,11 +33,11 @@ Progress: [█████████░] 90% (Phase 7 Plan 01 complete, Plan 0
 | 04-game-flow-input | 1/1 | 5min | 5min |
 | 05-card-system-infrastructure | 3/3 | 12min | 4min |
 | 06-card-effects-physics-merge | 2/2 | 6min | 3min |
-| 07-card-effects-scoring-economy | 1/2 | 2min | 2min |
+| 07-card-effects-scoring-economy | 2/2 | 3min | 1.5min |
 
 **Recent Trend:**
-- Last 5 plans: 05-02 (3min), 05-03 (5min), 06-01 (3min), 06-02 (3min), 07-01 (2min)
-- Trend: Consistent 2-5min for non-playtest plans
+- Last 5 plans: 05-03 (5min), 06-01 (3min), 06-02 (3min), 07-01 (2min), 07-02 (1min)
+- Trend: Consistent 1-5min for non-playtest plans
 
 *Updated after each plan completion*
 
@@ -105,6 +105,11 @@ Recent decisions affecting current work:
 - [07-01]: Fruit Frenzy "+2x" is additive bonus (base_score * 2 * count), not multiplicative on chain multiplier
 - [07-01]: Big Game Hunter triggers on new_tier >= 6 (created tier is Pear or Watermelon)
 - [07-01]: Bonus popups use separate show_bonus() method with purple/green colors, offset 30px below normal popups
+- [07-02]: Golden Touch is unconditional (every merge awards coins regardless of tier/chain)
+- [07-02]: Lucky Break uses independent rolls per card (2 cards can both trigger for 10 coins)
+- [07-02]: Pineapple Express maps to Pear (code tier 6) since no pineapple tier exists
+- [07-02]: Coin bonuses emit both coins_awarded and bonus_awarded for dual HUD+popup feedback
+- [07-02]: Direct card coin additions bypass ScoreManager's _coins_awarded counter (independent economy)
 
 ### Pending Todos
 
@@ -119,5 +124,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-11
-Stopped at: Completed 07-01-PLAN.md. Three scoring card effects (Quick Fuse, Fruit Frenzy, Big Game Hunter) with bonus popup system. Plan 02 (coin/mixed effects) next.
+Stopped at: Completed 07-02-PLAN.md. All 6 Phase 7 scoring/economy card effects operational. Phase 7 complete. Phase 8 (polish and balance) next.
 Resume file: None
