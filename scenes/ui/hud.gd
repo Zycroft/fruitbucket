@@ -36,6 +36,7 @@ func _ready() -> void:
 	EventBus.card_sold.connect(_on_card_sold)
 	EventBus.active_cards_changed.connect(_on_active_cards_changed)
 	EventBus.heavy_hitter_charges_changed.connect(_on_heavy_hitter_charges_changed)
+	EventBus.bonus_awarded.connect(_on_bonus_awarded)
 
 	# Connect pause button.
 	$PauseButton.pressed.connect(_on_pause_button_pressed)
@@ -246,3 +247,24 @@ func _on_heavy_hitter_charges_changed(charges: int, max_charges: int) -> void:
 		var entry = CardManager.active_cards[i]
 		if entry != null and (entry["card"] as CardData).card_id == "heavy_hitter":
 			_card_slot_nodes[i].set_status_text("%d/%d" % [charges, max_charges])
+
+
+func _on_bonus_awarded(amount: int, merge_pos: Vector2, bonus_type: String) -> void:
+	## Spawn a colored floating popup for card bonus awards.
+	var popup_container: Node2D = get_tree().get_first_node_in_group("popup_container") as Node2D
+	if not popup_container:
+		return
+
+	var popup: Label = _floating_score_scene.instantiate()
+	popup_container.add_child(popup)
+
+	var popup_text: String
+	if bonus_type == "coins":
+		popup_text = "+%d coins" % amount
+	else:
+		popup_text = "+%d" % amount
+	popup.show_bonus(popup_text, merge_pos, bonus_type)
+
+	# Also update score display if it was a score bonus (GameManager.score already updated).
+	if bonus_type == "score":
+		animate_score_to(GameManager.score)
