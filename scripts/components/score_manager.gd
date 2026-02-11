@@ -104,6 +104,12 @@ func _on_fruit_merged(old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 		_thresholds_reached += 1
 
 
+func get_chain_count() -> int:
+	## Public read-only accessor for current chain count.
+	## Used by CardEffectSystem for Quick Fuse and Fruit Frenzy.
+	return _chain_count
+
+
 func _on_chain_expired() -> void:
 	## Timer fired -- no merge occurred within the settling window.
 	## Emit chain_ended if the chain was meaningful (> 1 merge).

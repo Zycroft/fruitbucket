@@ -38,6 +38,16 @@ const WILD_SELECT_INTERVAL: int = 5
 ## Maximum wild fruits per Wild Fruit card owned.
 const WILD_MAX_PER_CARD: int = 1
 
+# --- Scoring effect constants ---
+## Quick Fuse: +25% of base_score per card for merges during active chain.
+const QUICK_FUSE_BONUS: float = 0.25
+## Fruit Frenzy: bonus = base_score * 2.0 * card_count for chains of 3+.
+const FRUIT_FRENZY_MULTIPLIER: float = 2.0
+const FRUIT_FRENZY_MIN_CHAIN: int = 3
+## Big Game Hunter: +50% of base_score per card for tier 7+ (code tier >= 6) merges.
+const BIG_GAME_BONUS: float = 0.5
+const BIG_GAME_MIN_TIER: int = 6
+
 ## Shared default physics material to restore non-bouncy fruits.
 var _default_physics_material: PhysicsMaterial = preload("res://resources/fruit_physics.tres")
 
@@ -57,9 +67,13 @@ var _wild_merge_counter: int = 0
 ## Rainbow outline shader for wild fruit visual.
 var _rainbow_shader: Shader = preload("res://resources/shaders/rainbow_outline.gdshader")
 
+## FruitData resources for base score lookup (loaded in _ready).
+var _fruit_types: Array[FruitData] = []
+
 
 func _ready() -> void:
 	add_to_group("card_effect_system")
+	_load_fruit_types()
 	EventBus.fruit_merged.connect(_on_fruit_merged)
 	EventBus.fruit_dropped.connect(_on_fruit_dropped)
 	EventBus.card_purchased.connect(_on_card_changed)
@@ -93,7 +107,7 @@ func _get_fruit_container() -> Node:
 # Signal handlers
 # =============================================================================
 
-func _on_fruit_merged(old_tier: int, _new_tier: int, merge_pos: Vector2) -> void:
+func _on_fruit_merged(old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 	## Dispatch merge-triggered effects.
 	# Cherry Bomb: explode on cherry merge
 	var cherry_count: int = _count_active("cherry_bomb")
@@ -117,6 +131,8 @@ func _on_fruit_merged(old_tier: int, _new_tier: int, merge_pos: Vector2) -> void
 		if _wild_merge_counter >= WILD_SELECT_INTERVAL:
 			_wild_merge_counter = 0
 			_select_wild_fruits()
+	# Scoring card effects: compute and apply bonus score from active scoring cards
+	_apply_scoring_effects(old_tier, new_tier, merge_pos)
 
 
 func _on_fruit_dropped(_tier: int, _pos: Vector2) -> void:
@@ -275,6 +291,83 @@ func _spawn_shockwave(pos: Vector2) -> void:
 	tween.tween_property(line, "modulate:a", 0.0, 0.3).from(0.9)
 	tween.set_parallel(false)
 	tween.tween_callback(ring.queue_free)
+
+
+# =============================================================================
+# Scoring effect infrastructure
+# =============================================================================
+
+func _load_fruit_types() -> void:
+	## Load all 8 FruitData .tres files in tier order for base score lookup.
+	var paths: Array[String] = [
+		"res://resources/fruit_data/tier_1_blueberry.tres",
+		"res://resources/fruit_data/tier_2_grape.tres",
+		"res://resources/fruit_data/tier_3_cherry.tres",
+		"res://resources/fruit_data/tier_4_strawberry.tres",
+		"res://resources/fruit_data/tier_5_orange.tres",
+		"res://resources/fruit_data/tier_6_apple.tres",
+		"res://resources/fruit_data/tier_7_pear.tres",
+		"res://resources/fruit_data/tier_8_watermelon.tres",
+	]
+	for path in paths:
+		var data: FruitData = load(path) as FruitData
+		if data:
+			_fruit_types.append(data)
+		else:
+			push_error("CardEffectSystem: Failed to load FruitData at %s" % path)
+
+
+func _get_base_score(new_tier: int) -> int:
+	## Look up the base score_value for a given tier from FruitData.
+	## Returns WATERMELON_VANISH_BONUS for watermelon vanish (tier >= array size).
+	if new_tier >= _fruit_types.size():
+		return 1000  # Watermelon vanish bonus
+	return _fruit_types[new_tier].score_value
+
+
+func _apply_quick_fuse(new_tier: int) -> int:
+	## Quick Fuse: +25% of base_score per card when merge happens during active chain.
+	var count: int = _count_active("quick_fuse")
+	if count == 0:
+		return 0
+	var sm: ScoreManager = get_tree().get_first_node_in_group("score_manager") as ScoreManager
+	if sm == null or sm.get_chain_count() < 2:
+		return 0
+	return int(_get_base_score(new_tier) * QUICK_FUSE_BONUS * count)
+
+
+func _apply_fruit_frenzy(new_tier: int) -> int:
+	## Fruit Frenzy: +2x base_score per card when chain_count >= 3.
+	var count: int = _count_active("fruit_frenzy")
+	if count == 0:
+		return 0
+	var sm: ScoreManager = get_tree().get_first_node_in_group("score_manager") as ScoreManager
+	if sm == null or sm.get_chain_count() < FRUIT_FRENZY_MIN_CHAIN:
+		return 0
+	return int(_get_base_score(new_tier) * FRUIT_FRENZY_MULTIPLIER * count)
+
+
+func _apply_big_game_hunter(new_tier: int) -> int:
+	## Big Game Hunter: +50% of base_score per card when created fruit is tier 7+ (code tier >= 6).
+	var count: int = _count_active("big_game_hunter")
+	if count == 0:
+		return 0
+	if new_tier < BIG_GAME_MIN_TIER:
+		return 0
+	return int(_get_base_score(new_tier) * BIG_GAME_BONUS * count)
+
+
+func _apply_scoring_effects(_old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
+	## Compute and apply all scoring/economy card bonuses for this merge.
+	var bonus_score: int = 0
+
+	bonus_score += _apply_quick_fuse(new_tier)
+	bonus_score += _apply_fruit_frenzy(new_tier)
+	bonus_score += _apply_big_game_hunter(new_tier)
+
+	if bonus_score > 0:
+		GameManager.score += bonus_score
+		EventBus.bonus_awarded.emit(bonus_score, merge_pos, "score")
 
 
 # =============================================================================

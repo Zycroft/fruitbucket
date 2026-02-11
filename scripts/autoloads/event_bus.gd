@@ -68,3 +68,6 @@ signal wild_fruit_unmarked(fruit: RigidBody2D)
 
 ## Emitted when Cherry Bomb triggers (for visual feedback coordination).
 signal cherry_bomb_triggered(position: Vector2)
+
+## Emitted when a card effect awards bonus score or coins (for bonus popups).
+signal bonus_awarded(amount: int, position: Vector2, bonus_type: String)
