@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Game Flow & Input** - Pause menu, restart, and dual-platform input (mouse + touch)
 - [x] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle (completed 2026-02-09)
 - [x] **Phase 6: Card Effects -- Physics & Merge** - Cards that modify physics properties and merge behavior (completed 2026-02-09)
-- [ ] **Phase 7: Card Effects -- Scoring & Economy** - Cards that modify score multipliers and coin income
+- [x] **Phase 7: Card Effects -- Scoring & Economy** - Cards that modify score multipliers and coin income (completed 2026-02-10)
 - [ ] **Phase 8: Card Activation Feedback & Starter Kits** - Visual card triggers, starter card sets, and run summary screen
 
 ## Phase Details
@@ -125,8 +125,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 07-01-PLAN.md -- Score bonus effects infrastructure + Quick Fuse, Fruit Frenzy, Big Game Hunter with colored bonus popups (Wave 1)
-- [ ] 07-02-PLAN.md -- Golden Touch, Lucky Break, Pineapple Express coin/mixed effects with complete dispatcher (Wave 2)
+- [x] 07-01-PLAN.md -- Score bonus effects infrastructure + Quick Fuse, Fruit Frenzy, Big Game Hunter with colored bonus popups (Wave 1)
+- [x] 07-02-PLAN.md -- Golden Touch, Lucky Break, Pineapple Express coin/mixed effects with complete dispatcher (Wave 2)
 
 ### Phase 8: Card Activation Feedback & Starter Kits
 **Goal**: Players see when their cards trigger during gameplay, can choose from distinct starter card sets that shape early strategy, and see a comprehensive run summary at game over.
@@ -158,5 +158,5 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 | 4. Game Flow & Input | 1/1 | ✓ Complete | 2026-02-08 |
 | 5. Card System Infrastructure | 3/3 | ✓ Complete | 2026-02-09 |
 | 6. Card Effects -- Physics & Merge | 2/2 | ✓ Complete | 2026-02-09 |
-| 7. Card Effects -- Scoring & Economy | 0/2 | Not started | - |
+| 7. Card Effects -- Scoring & Economy | 2/2 | ✓ Complete | 2026-02-10 |
 | 8. Card Activation Feedback & Starter Kits | 0/2 | Not started | - |
