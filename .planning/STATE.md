@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 Phase: 7 of 8 (Card Effects -- Scoring & Economy) -- COMPLETE
 Plan: 2 of 2 in current phase (Phase 7 complete)
 Status: Phase 7 complete -- all 6 scoring/economy card effects operational
-Last activity: 2026-02-12 - Completed quick task 1: Deploy game to zycroft.duckdns.org/bucket via GitHub Actions
+Last activity: 2026-02-12 - Completed quick task 2: Add unique cartoon faces to all 8 fruit types
 
 Progress: [██████████] 95% (Phase 7 complete, Phase 8 next)
 
@@ -110,6 +110,8 @@ Recent decisions affecting current work:
 - [07-02]: Pineapple Express maps to Pear (code tier 6) since no pineapple tier exists
 - [07-02]: Coin bonuses emit both coins_awarded and bonus_awarded for dual HUD+popup feedback
 - [07-02]: Direct card coin additions bypass ScoreManager's _coins_awarded counter (independent economy)
+- [quick-2]: Vector _draw() faces instead of texture sprites -- scales perfectly at any size, no asset files needed
+- [quick-2]: Fixed 25.0 radius for HUD preview face -- consistent preview size regardless of actual fruit radius
 
 ### Pending Todos
 
@@ -126,9 +128,10 @@ None yet.
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 1 | Deploy game to zycroft.duckdns.org/bucket via GitHub Actions | 2026-02-12 | d0698fc | [1-deploy-game-to-zycroft-duckdns-org-bucke](./quick/1-deploy-game-to-zycroft-duckdns-org-bucke/) |
+| 2 | Add unique cartoon faces to all 8 fruit types | 2026-02-12 | bad8203 | [2-add-faces-to-each-of-the-fruit-types](./quick/2-add-faces-to-each-of-the-fruit-types/) |
 
 ## Session Continuity
 
 Last session: 2026-02-12
-Stopped at: Completed quick-1 (deploy to zycroft.duckdns.org/bucket). deploy-web.yml restructured into 3-job pipeline. SSH_PRIVATE_KEY secret setup required.
+Stopped at: Completed quick-2 (add faces to fruits). FaceRenderer with 8 unique _draw() expressions on all fruit tiers + HUD preview.
 Resume file: None
