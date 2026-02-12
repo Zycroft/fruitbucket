@@ -38,6 +38,17 @@ func _on_starter_pick_done(_card: CardData) -> void:
 
 func _on_game_over() -> void:
 	GameManager.change_state(GameManager.GameState.GAME_OVER)
+	# Delay showing summary so fruits settle visually (GAME_OVER doesn't pause tree).
+	await get_tree().create_timer(2.5).timeout
+	_show_run_summary()
+
+
+func _show_run_summary() -> void:
+	## Gather run stats and display the celebratory summary overlay.
+	var tracker: RunStatsTracker = get_tree().get_first_node_in_group("run_stats_tracker") as RunStatsTracker
+	if tracker:
+		var stats: Dictionary = tracker.get_stats()
+		$RunSummary.show_summary(stats)
 
 
 func _on_score_threshold(_threshold: int) -> void:

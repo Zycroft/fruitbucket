@@ -211,7 +211,6 @@ func _on_pause_button_pressed() -> void:
 func _on_game_state_changed(new_state: int) -> void:
 	## Update HUD elements based on game state changes.
 	if new_state == GameManager.GameState.GAME_OVER:
-		$GameOverLabel.visible = true
 		$PauseButton.visible = false
 	elif new_state == GameManager.GameState.PAUSED:
 		$PauseButton.visible = false

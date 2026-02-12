@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://game_scene"]
+[gd_scene load_steps=18 format=3 uid="uid://game_scene"]
 
 [ext_resource type="PackedScene" path="res://scenes/background/background.tscn" id="1_background"]
 [ext_resource type="PackedScene" path="res://scenes/bucket/bucket.tscn" id="2_bucket"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/card_shop.tscn" id="12_card_shop"]
 [ext_resource type="PackedScene" path="res://scenes/ui/starter_pick.tscn" id="13_starter_pick"]
 [ext_resource type="Script" path="res://scripts/components/card_effect_system.gd" id="14_card_effect_system"]
+[ext_resource type="Script" path="res://scripts/components/run_stats_tracker.gd" id="15_run_stats_tracker"]
+[ext_resource type="PackedScene" path="res://scenes/ui/run_summary.tscn" id="16_run_summary"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_overflow"]
 size = Vector2(400, 20)
@@ -48,6 +50,9 @@ script = ExtResource("10_merge_feedback")
 [node name="CardEffectSystem" type="Node" parent="." groups=["card_effect_system"]]
 script = ExtResource("14_card_effect_system")
 
+[node name="RunStatsTracker" type="Node" parent="." groups=["run_stats_tracker"]]
+script = ExtResource("15_run_stats_tracker")
+
 [node name="DropController" type="Node2D" parent="."]
 script = ExtResource("4_drop_controller")
 
@@ -73,3 +78,5 @@ shape = SubResource("RectangleShape2D_overflow")
 [node name="CardShop" parent="." instance=ExtResource("12_card_shop")]
 
 [node name="StarterPick" parent="." instance=ExtResource("13_starter_pick")]
+
+[node name="RunSummary" parent="." instance=ExtResource("16_run_summary")]
