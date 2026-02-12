@@ -125,6 +125,7 @@ func _on_fruit_merged(old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 	var cherry_count: int = _count_active("cherry_bomb")
 	if cherry_count > 0 and old_tier == CHERRY_TIER:
 		_apply_cherry_bomb(merge_pos, cherry_count)
+		EventBus.card_effect_triggered.emit("cherry_bomb")
 	# Bouncy Berry: apply to newly spawned merge result (deferred to let MergeManager spawn first)
 	if _count_active("bouncy_berry") > 0:
 		call_deferred("_apply_bouncy_berry_all")
@@ -136,6 +137,7 @@ func _on_fruit_merged(old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 			_heavy_recharging = false
 			_heavy_merge_counter = 0
 			EventBus.heavy_hitter_charges_changed.emit(_heavy_charges, HEAVY_CHARGES_MAX)
+			EventBus.card_effect_triggered.emit("heavy_hitter")
 	# Wild Fruit: cleanup invalid references and select new wild fruits
 	_cleanup_wild_refs()
 	if _count_active("wild_fruit") > 0:
@@ -143,6 +145,7 @@ func _on_fruit_merged(old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 		if _wild_merge_counter >= WILD_SELECT_INTERVAL:
 			_wild_merge_counter = 0
 			_select_wild_fruits()
+			EventBus.card_effect_triggered.emit("wild_fruit")
 	# Scoring card effects: compute and apply bonus score from active scoring cards
 	_apply_scoring_effects(old_tier, new_tier, merge_pos)
 
@@ -151,9 +154,11 @@ func _on_fruit_dropped(_tier: int, _pos: Vector2) -> void:
 	## Apply bouncy berry to the just-dropped fruit (transitions from frozen to physics).
 	if _count_active("bouncy_berry") > 0:
 		call_deferred("_apply_bouncy_berry_all")
+		EventBus.card_effect_triggered.emit("bouncy_berry")
 	# Heavy Hitter: consume a charge and apply mass boost to the just-dropped fruit.
 	if _count_active("heavy_hitter") > 0 and _heavy_charges > 0:
 		_heavy_charges -= 1
+		EventBus.card_effect_triggered.emit("heavy_hitter")
 		var container: Node = _get_fruit_container()
 		if container and container.get_child_count() > 0:
 			var fruit: Fruit = container.get_child(container.get_child_count() - 1) as Fruit
@@ -345,7 +350,10 @@ func _apply_quick_fuse(new_tier: int) -> int:
 	var sm: ScoreManager = get_tree().get_first_node_in_group("score_manager") as ScoreManager
 	if sm == null or sm.get_chain_count() < 2:
 		return 0
-	return int(_get_base_score(new_tier) * QUICK_FUSE_BONUS * count)
+	var bonus: int = int(_get_base_score(new_tier) * QUICK_FUSE_BONUS * count)
+	if bonus > 0:
+		EventBus.card_effect_triggered.emit("quick_fuse")
+	return bonus
 
 
 func _apply_fruit_frenzy(new_tier: int) -> int:
@@ -356,7 +364,10 @@ func _apply_fruit_frenzy(new_tier: int) -> int:
 	var sm: ScoreManager = get_tree().get_first_node_in_group("score_manager") as ScoreManager
 	if sm == null or sm.get_chain_count() < FRUIT_FRENZY_MIN_CHAIN:
 		return 0
-	return int(_get_base_score(new_tier) * FRUIT_FRENZY_MULTIPLIER * count)
+	var bonus: int = int(_get_base_score(new_tier) * FRUIT_FRENZY_MULTIPLIER * count)
+	if bonus > 0:
+		EventBus.card_effect_triggered.emit("fruit_frenzy")
+	return bonus
 
 
 func _apply_big_game_hunter(new_tier: int) -> int:
@@ -366,7 +377,10 @@ func _apply_big_game_hunter(new_tier: int) -> int:
 		return 0
 	if new_tier < BIG_GAME_MIN_TIER:
 		return 0
-	return int(_get_base_score(new_tier) * BIG_GAME_BONUS * count)
+	var bonus: int = int(_get_base_score(new_tier) * BIG_GAME_BONUS * count)
+	if bonus > 0:
+		EventBus.card_effect_triggered.emit("big_game_hunter")
+	return bonus
 
 
 func _apply_golden_touch() -> int:
@@ -374,7 +388,10 @@ func _apply_golden_touch() -> int:
 	var count: int = _count_active("golden_touch")
 	if count <= 0:
 		return 0
-	return GOLDEN_TOUCH_COINS * count
+	var bonus: int = GOLDEN_TOUCH_COINS * count
+	if bonus > 0:
+		EventBus.card_effect_triggered.emit("golden_touch")
+	return bonus
 
 
 func _apply_lucky_break() -> int:
@@ -387,6 +404,8 @@ func _apply_lucky_break() -> int:
 	for i in count:
 		if randf() < LUCKY_BREAK_CHANCE:
 			total_coins += LUCKY_BREAK_COINS
+	if total_coins > 0:
+		EventBus.card_effect_triggered.emit("lucky_break")
 	return total_coins
 
 
@@ -398,10 +417,13 @@ func _apply_pineapple_express(new_tier: int) -> Dictionary:
 		return {"score": 0, "coins": 0}
 	if new_tier != PINEAPPLE_TIER:
 		return {"score": 0, "coins": 0}
-	return {
+	var result: Dictionary = {
 		"score": PINEAPPLE_BONUS_SCORE * count,
 		"coins": PINEAPPLE_BONUS_COINS * count,
 	}
+	if result["score"] > 0 or result["coins"] > 0:
+		EventBus.card_effect_triggered.emit("pineapple_express")
+	return result
 
 
 func _apply_scoring_effects(_old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
