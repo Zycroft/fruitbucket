@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Card System Infrastructure** - Card slots, shop, economy, rarity, and per-run card lifecycle (completed 2026-02-09)
 - [x] **Phase 6: Card Effects -- Physics & Merge** - Cards that modify physics properties and merge behavior (completed 2026-02-09)
 - [x] **Phase 7: Card Effects -- Scoring & Economy** - Cards that modify score multipliers and coin income (completed 2026-02-10)
-- [ ] **Phase 8: Card Activation Feedback & Starter Kits** - Visual card triggers, starter card sets, and run summary screen
+- [x] **Phase 8: Card Activation Feedback & Starter Kits** - Visual card triggers, starter card sets, and run summary screen (completed 2026-02-12)
 
 ## Phase Details
 
@@ -139,8 +139,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md -- Card trigger feedback: glow + bounce animation on HUD card slots for all 10 card effects (Wave 1)
-- [ ] 08-02-PLAN.md -- Starter kit selection (Physics/Score/Surprise) and celebratory run summary screen (Wave 1)
+- [x] 08-01-PLAN.md -- Card trigger feedback: glow + bounce animation on HUD card slots for all 10 card effects (Wave 1)
+- [x] 08-02-PLAN.md -- Starter kit selection (Physics/Score/Surprise) and celebratory run summary screen (Wave 1)
 
 ## Progress
 
@@ -159,4 +159,4 @@ Phases 6 and 7 both depend on Phase 5 and could execute in parallel.
 | 5. Card System Infrastructure | 3/3 | ✓ Complete | 2026-02-09 |
 | 6. Card Effects -- Physics & Merge | 2/2 | ✓ Complete | 2026-02-09 |
 | 7. Card Effects -- Scoring & Economy | 2/2 | ✓ Complete | 2026-02-10 |
-| 8. Card Activation Feedback & Starter Kits | 0/2 | Not started | - |
+| 8. Card Activation Feedback & Starter Kits | 2/2 | ✓ Complete | 2026-02-12 |
