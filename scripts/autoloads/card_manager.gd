@@ -18,6 +18,25 @@ const RARITY_WEIGHTS: Array = [
 ## Price multiplier per shop level (prices increase as run progresses).
 const PRICE_MULTIPLIERS: Array[float] = [1.0, 1.25, 1.5, 2.0]
 
+## Starter kit definitions: 2 themed + 1 surprise.
+const STARTER_KITS: Array[Dictionary] = [
+	{
+		"name": "Physics Kit",
+		"description": "Modify how fruits move and collide",
+		"card_pool": ["bouncy_berry", "cherry_bomb", "heavy_hitter", "wild_fruit"],
+	},
+	{
+		"name": "Score Kit",
+		"description": "Boost your score and chain bonuses",
+		"card_pool": ["quick_fuse", "fruit_frenzy", "big_game_hunter", "pineapple_express"],
+	},
+	{
+		"name": "Surprise!",
+		"description": "A random card from any category",
+		"card_pool": [],  # Empty = pick from full pool
+	},
+]
+
 ## Cards currently in the player's slots.
 ## Each element is either null (empty) or a Dictionary { card: CardData, purchase_price: int }.
 var active_cards: Array = []
@@ -115,6 +134,23 @@ func get_sell_price(slot_index: int) -> int:
 		return 0
 	var card: CardData = entry["card"] as CardData
 	return maxi(entry["purchase_price"] / 2, card.base_price / 2)
+
+
+func get_kit_card(kit_index: int) -> CardData:
+	## Resolve a starter kit to a random card from its pool.
+	## If the kit has an empty card_pool (Surprise), picks from the full pool.
+	var kit: Dictionary = STARTER_KITS[kit_index]
+	var pool: Array = kit["card_pool"]
+	if pool.is_empty():
+		return _card_pool.pick_random()
+	# Filter _card_pool to cards whose card_id is in the kit's pool.
+	var filtered: Array[CardData] = []
+	for card in _card_pool:
+		if card.card_id in pool:
+			filtered.append(card)
+	if filtered.is_empty():
+		return _card_pool.pick_random()
+	return filtered.pick_random()
 
 
 func generate_shop_offers(count: int = 3) -> Array[CardData]:

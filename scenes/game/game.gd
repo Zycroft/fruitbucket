@@ -26,10 +26,9 @@ func _ready() -> void:
 
 
 func _show_starter_pick() -> void:
-	## Generate starter card offers and show the pick overlay.
-	var offers: Array = CardManager.generate_starter_offers(3)
+	## Show the starter kit pick overlay. Kits are defined in CardManager.
 	GameManager.change_state(GameManager.GameState.PICKING)
-	EventBus.starter_pick_requested.emit(offers)
+	EventBus.starter_pick_requested.emit([])
 
 
 func _on_starter_pick_done(_card: CardData) -> void:
