@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 Phase: 7 of 8 (Card Effects -- Scoring & Economy) -- COMPLETE
 Plan: 2 of 2 in current phase (Phase 7 complete)
 Status: Phase 7 complete -- all 6 scoring/economy card effects operational
-Last activity: 2026-02-10 -- Phase 7 Plan 02 executed
+Last activity: 2026-02-12 - Completed quick task 1: Deploy game to zycroft.duckdns.org/bucket via GitHub Actions
 
 Progress: [██████████] 95% (Phase 7 complete, Phase 8 next)
 
@@ -120,6 +120,12 @@ None yet.
 - [Phase 1 resolved]: Physics stacking stable with solver_iterations=6, playtest confirmed 20+ fruit stacking without jitter
 - [Phase 1 lesson]: ColorRect/Control nodes default to mouse_filter=STOP — always set IGNORE on non-interactive UI elements
 - [Phase 5 lesson]: theme_override_constants is a .tscn serialization key, NOT a settable GDScript property — use add_theme_constant_override() in code
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 1 | Deploy game to zycroft.duckdns.org/bucket via GitHub Actions | 2026-02-12 | d0698fc | [1-deploy-game-to-zycroft-duckdns-org-bucke](./quick/1-deploy-game-to-zycroft-duckdns-org-bucke/) |
 
 ## Session Continuity
 
