@@ -136,11 +136,11 @@ Plans:
   1. Active cards visually glow or pulse in the HUD at the moment their effect triggers during gameplay, making it clear which card did what
   2. At run start, player chooses from 2-3 starter card sets (Physics Kit, Score Kit, Economy Kit) that each offer cards biased toward a specific play style
   3. After game over, a run summary screen displays biggest chain, highest tier reached, total merges, cards used during the run, and final score
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
+- [ ] 08-01-PLAN.md -- Card trigger feedback: glow + bounce animation on HUD card slots for all 10 card effects (Wave 1)
+- [ ] 08-02-PLAN.md -- Starter kit selection (Physics/Score/Surprise) and celebratory run summary screen (Wave 1)
 
 ## Progress
 
