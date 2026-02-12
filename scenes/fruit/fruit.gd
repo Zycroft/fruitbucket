@@ -42,6 +42,9 @@ func initialize(data: FruitData) -> void:
 	var scale_factor: float = data.radius / texture_half_width
 	$Sprite2D.scale = Vector2(scale_factor, scale_factor)
 
+	# Configure face renderer.
+	$FaceRenderer.set_face(data.tier, data.radius)
+
 	# Set physics mass from FruitData.
 	mass = data.mass_override
 
