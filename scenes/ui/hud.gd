@@ -185,6 +185,11 @@ func update_next_fruit(tier: int) -> void:
 			var s: float = target_size / tex_size
 			$NextFruitPreview/NextFruitSprite.scale = Vector2(s, s)
 
+	# Update face preview -- use display radius matching the preview scale.
+	# The preview target size is 50px, so the effective radius for face drawing
+	# should be 25.0 (half of 50px display) so face proportions match.
+	$NextFruitPreview/NextFaceRenderer.set_face(tier, 25.0)
+
 
 func _on_pause_button_pressed() -> void:
 	## Request pause via EventBus (PauseMenu listens and handles state change).
