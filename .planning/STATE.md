@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Phase 7 complete. All 6 scoring/economy card effects operational. Ready for Phase 8 (polish and balance).
+**Current focus:** Phase 8 in progress. Card activation feedback complete (Plan 1). Starter kits and run summary next (Plan 2).
 
 ## Current Position
 
-Phase: 7 of 8 (Card Effects -- Scoring & Economy) -- COMPLETE
-Plan: 2 of 2 in current phase (Phase 7 complete)
-Status: Phase 7 complete -- all 6 scoring/economy card effects operational
-Last activity: 2026-02-12 - Completed quick task 2: Add unique cartoon faces to all 8 fruit types
+Phase: 8 of 8 (Card Activation Feedback & Starter Kits) -- IN PROGRESS
+Plan: 1 of 2 in current phase (Plan 1 complete)
+Status: Plan 08-01 complete -- card trigger feedback on all 10 effects. Plan 08-02 next.
+Last activity: 2026-02-12 - Completed 08-01: Card activation feedback with rarity glow + staggered animations
 
-Progress: [██████████] 95% (Phase 7 complete, Phase 8 next)
+Progress: [██████████] 97% (Phase 8, Plan 1 of 2 complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
+- Total plans completed: 16
 - Average duration: 5min
-- Total execution time: 1.15 hours
+- Total execution time: 1.2 hours
 
 **By Phase:**
 
@@ -34,9 +34,10 @@ Progress: [██████████] 95% (Phase 7 complete, Phase 8 next)
 | 05-card-system-infrastructure | 3/3 | 12min | 4min |
 | 06-card-effects-physics-merge | 2/2 | 6min | 3min |
 | 07-card-effects-scoring-economy | 2/2 | 3min | 1.5min |
+| 08-card-activation-feedback-starter-kits | 1/2 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 05-03 (5min), 06-01 (3min), 06-02 (3min), 07-01 (2min), 07-02 (1min)
+- Last 5 plans: 06-01 (3min), 06-02 (3min), 07-01 (2min), 07-02 (1min), 08-01 (3min)
 - Trend: Consistent 1-5min for non-playtest plans
 
 *Updated after each plan completion*
@@ -112,6 +113,10 @@ Recent decisions affecting current work:
 - [07-02]: Direct card coin additions bypass ScoreManager's _coins_awarded counter (independent economy)
 - [quick-2]: Vector _draw() faces instead of texture sprites -- scales perfectly at any size, no asset files needed
 - [quick-2]: Fixed 25.0 radius for HUD preview face -- consistent preview size regardless of actual fruit radius
+- [08-01]: Bouncy Berry triggers on fruit_dropped (visible moment) not merge (too ambient)
+- [08-01]: Heavy Hitter triggers on both charge consume and recharge (both meaningful moments)
+- [08-01]: Tween-is-running guard for dampening rapid triggers (simplest approach, natural glow persistence)
+- [08-01]: Charge cards get 1.25x bounce + 0.5s glow + 6px border; passive cards get 1.15x + 0.3s + 5px
 
 ### Pending Todos
 
@@ -133,5 +138,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-12
-Stopped at: Completed quick-2 (add faces to fruits). FaceRenderer with 8 unique _draw() expressions on all fruit tiers + HUD preview.
+Stopped at: Completed 08-01-PLAN.md (card activation feedback). All 10 card effects emit trigger signals with rarity glow + staggered HUD animations.
 Resume file: None
