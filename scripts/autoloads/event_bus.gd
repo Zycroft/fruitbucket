@@ -71,3 +71,6 @@ signal cherry_bomb_triggered(position: Vector2)
 
 ## Emitted when a card effect awards bonus score or coins (for bonus popups).
 signal bonus_awarded(amount: int, position: Vector2, bonus_type: String)
+
+## Emitted when a card effect activates during gameplay (for HUD trigger animation).
+signal card_effect_triggered(card_id: String)

@@ -22,6 +22,15 @@ var _card_slot_scene: PackedScene = preload("res://scenes/ui/card_slot_display.t
 ## Card slot display instances (3 total, display-only in HUD).
 var _card_slot_nodes: Array = []
 
+## Queue for staggered card trigger animations.
+var _trigger_queue: Array[String] = []
+
+## Stagger delay between consecutive card trigger animations.
+const TRIGGER_STAGGER: float = 0.15
+
+## Card IDs that use charge-based (more prominent) trigger animation.
+const CHARGE_CARD_IDS: Array[String] = ["heavy_hitter", "wild_fruit"]
+
 
 func _ready() -> void:
 	_load_fruit_types()
@@ -37,6 +46,7 @@ func _ready() -> void:
 	EventBus.active_cards_changed.connect(_on_active_cards_changed)
 	EventBus.heavy_hitter_charges_changed.connect(_on_heavy_hitter_charges_changed)
 	EventBus.bonus_awarded.connect(_on_bonus_awarded)
+	EventBus.card_effect_triggered.connect(_on_card_effect_triggered)
 
 	# Connect pause button.
 	$PauseButton.pressed.connect(_on_pause_button_pressed)
@@ -273,3 +283,26 @@ func _on_bonus_awarded(amount: int, merge_pos: Vector2, bonus_type: String) -> v
 	# Also update score display if it was a score bonus (GameManager.score already updated).
 	if bonus_type == "score":
 		animate_score_to(GameManager.score)
+
+
+func _on_card_effect_triggered(card_id: String) -> void:
+	## Queue a card trigger animation. Plays immediately if queue was empty,
+	## otherwise staggered after the current animation finishes.
+	_trigger_queue.append(card_id)
+	if _trigger_queue.size() == 1:
+		_play_next_trigger()
+
+
+func _play_next_trigger() -> void:
+	## Play the next queued card trigger animation and schedule the next if any.
+	if _trigger_queue.is_empty():
+		return
+	var card_id: String = _trigger_queue.pop_front()
+	var is_charge: bool = card_id in CHARGE_CARD_IDS
+	# Find ALL matching card slots and animate them.
+	for slot in _card_slot_nodes:
+		if slot.get_card_id() == card_id:
+			slot.play_trigger_animation(is_charge)
+	# Schedule next trigger if queue has more entries.
+	if not _trigger_queue.is_empty():
+		get_tree().create_timer(TRIGGER_STAGGER).timeout.connect(_play_next_trigger)
