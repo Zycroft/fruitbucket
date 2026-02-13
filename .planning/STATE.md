@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-13)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Milestone v1.1 -- Kawaii Art Overhaul
+**Current focus:** Milestone v1.1 -- Kawaii Art Overhaul, Phase 9 (Fruit Sprites)
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: --
-Status: Defining requirements for v1.1
-Last activity: 2026-02-13 -- Milestone v1.1 started
+Phase: 9 of 13 (Fruit Sprites)
+Plan: -- (not yet planned)
+Status: Ready to plan
+Last activity: 2026-02-13 -- Roadmap created for v1.1 (phases 9-13)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [################░░] 82% overall (17/17 v1.0 + 0/? v1.1)
 
 ## Performance Metrics
 
@@ -53,9 +53,6 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Phase 1 resolved]: Physics stacking stable with solver_iterations=6
-- [Phase 1 lesson]: ColorRect/Control nodes default to mouse_filter=STOP -- always set IGNORE on non-interactive UI
-- [Phase 5 lesson]: theme_override_constants is .tscn serialization key, NOT settable in GDScript -- use add_theme_constant_override()
 - [Art concern]: Generated images need transparent backgrounds for game integration
 - [Art concern]: Fruit sprites must work at multiple sizes (15px blueberry to 80px watermelon radius)
 
@@ -74,5 +71,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Starting milestone v1.1 -- Kawaii Art Overhaul
+Stopped at: Roadmap created for v1.1 Kawaii Art Overhaul (phases 9-13)
 Resume file: None

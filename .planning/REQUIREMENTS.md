@@ -77,26 +77,26 @@ PHYS-01 through PHYS-08, SCOR-01 through SCOR-05, CARD-01 through CARD-11, EFCT-
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FRUIT-01 | — | Pending |
-| FRUIT-02 | — | Pending |
-| FRUIT-03 | — | Pending |
-| FRUIT-04 | — | Pending |
-| FRUIT-05 | — | Pending |
-| BSKT-01 | — | Pending |
-| BSKT-02 | — | Pending |
-| BSKT-03 | — | Pending |
-| BG-01 | — | Pending |
-| BG-02 | — | Pending |
-| UI-01 | — | Pending |
-| UI-02 | — | Pending |
-| UI-03 | — | Pending |
-| UI-04 | — | Pending |
+| FRUIT-01 | Phase 9 | Pending |
+| FRUIT-02 | Phase 9 | Pending |
+| FRUIT-03 | Phase 10 | Pending |
+| FRUIT-04 | Phase 10 | Pending |
+| FRUIT-05 | Phase 10 | Pending |
+| BSKT-01 | Phase 11 | Pending |
+| BSKT-02 | Phase 11 | Pending |
+| BSKT-03 | Phase 11 | Pending |
+| BG-01 | Phase 12 | Pending |
+| BG-02 | Phase 12 | Pending |
+| UI-01 | Phase 13 | Pending |
+| UI-02 | Phase 13 | Pending |
+| UI-03 | Phase 13 | Pending |
+| UI-04 | Phase 13 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 14 total
-- Mapped to phases: 0
-- Unmapped: 14
+- Mapped to phases: 14
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-13*
-*Last updated: 2026-02-13 after v1.1 definition*
+*Last updated: 2026-02-13 after v1.1 roadmap creation*
