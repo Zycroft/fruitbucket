@@ -186,7 +186,6 @@ func update_next_fruit(tier: int) -> void:
 		return
 	var data: FruitData = _fruit_types[tier]
 	$NextFruitPreview/NextFruitSprite.texture = data.sprite
-	$NextFruitPreview/NextFruitSprite.modulate = data.color
 	# Scale the preview to a consistent display size (~50x50 pixels).
 	if data.sprite:
 		var tex_size: float = data.sprite.get_width()
@@ -194,11 +193,6 @@ func update_next_fruit(tier: int) -> void:
 			var target_size: float = 50.0
 			var s: float = target_size / tex_size
 			$NextFruitPreview/NextFruitSprite.scale = Vector2(s, s)
-
-	# Update face preview -- use display radius matching the preview scale.
-	# The preview target size is 50px, so the effective radius for face drawing
-	# should be 25.0 (half of 50px display) so face proportions match.
-	$NextFruitPreview/NextFaceRenderer.set_face(tier, 25.0)
 
 
 func _on_pause_button_pressed() -> void:

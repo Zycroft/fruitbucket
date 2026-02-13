@@ -27,9 +27,8 @@ func initialize(data: FruitData) -> void:
 	## Must be called immediately after instantiation, before adding to scene tree.
 	fruit_data = data
 
-	# Set sprite texture and tint
+	# Set sprite texture (kawaii sprites have natural colors baked in).
 	$Sprite2D.texture = data.sprite
-	$Sprite2D.modulate = data.color
 
 	# Create a NEW CircleShape2D instance -- NEVER share shapes between fruits.
 	var shape := CircleShape2D.new()
@@ -37,13 +36,10 @@ func initialize(data: FruitData) -> void:
 	$CollisionShape2D.shape = shape
 
 	# Scale sprite to match the collision radius.
-	# The placeholder texture is 64x64, so half-width = 32.
+	# Kawaii textures are 512x512, so half-width = 256.
 	var texture_half_width: float = data.sprite.get_width() / 2.0
 	var scale_factor: float = data.radius / texture_half_width
 	$Sprite2D.scale = Vector2(scale_factor, scale_factor)
-
-	# Configure face renderer.
-	$FaceRenderer.set_face(data.tier, data.radius)
 
 	# Set physics mass from FruitData.
 	mass = data.mass_override

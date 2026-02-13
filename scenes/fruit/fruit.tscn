@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://fruit_scene"]
+[gd_scene load_steps=4 format=3 uid="uid://fruit_scene"]
 
 [ext_resource type="Script" path="res://scenes/fruit/fruit.gd" id="1_fruit"]
 [ext_resource type="PhysicsMaterial" path="res://resources/fruit_physics.tres" id="2_physics"]
 [ext_resource type="Texture2D" path="res://assets/sprites/fruits/placeholder_fruit.png" id="3_sprite"]
-[ext_resource type="Script" path="res://scenes/fruit/face_renderer.gd" id="4_face"]
 
 [node name="Fruit" type="RigidBody2D"]
 collision_layer = 1
@@ -18,9 +17,6 @@ script = ExtResource("1_fruit")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_sprite")
-
-[node name="FaceRenderer" type="Node2D" parent="."]
-script = ExtResource("4_face")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

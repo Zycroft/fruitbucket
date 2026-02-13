@@ -164,7 +164,7 @@ func _on_fruit_dropped(_tier: int, _pos: Vector2) -> void:
 			if fruit and is_instance_valid(fruit):
 				fruit.mass = fruit.fruit_data.mass_override * HEAVY_MASS_MULTIPLIER * _count_active("heavy_hitter")
 				fruit.is_heavy = true
-				fruit.get_node("Sprite2D").modulate = fruit.fruit_data.color.darkened(0.3)
+				fruit.get_node("Sprite2D").modulate = Color(0.7, 0.5, 0.5, 1.0)
 		EventBus.heavy_hitter_charges_changed.emit(_heavy_charges, HEAVY_CHARGES_MAX)
 		if _heavy_charges <= 0:
 			_heavy_recharging = true
@@ -237,16 +237,17 @@ func _apply_bouncy_to_fruit(fruit: Fruit, stack_count: int) -> void:
 	if stack_count <= 0:
 		# No Bouncy Berry active -- restore default material
 		fruit.physics_material_override = _default_physics_material
-		# Restore original sprite color
-		fruit.get_node("Sprite2D").modulate = fruit.fruit_data.color
+		# Restore default modulate (no tint)
+		fruit.get_node("Sprite2D").modulate = Color.WHITE
 		return
 	# Create a NEW PhysicsMaterial (never modify the shared resource)
 	var mat: PhysicsMaterial = PhysicsMaterial.new()
 	mat.friction = BOUNCY_BASE_FRICTION
 	mat.bounce = BOUNCY_BASE_BOUNCE + (BOUNCY_BERRY_BOUNCE_BONUS * stack_count)
 	fruit.physics_material_override = mat
-	# Subtle persistent glow: lighten the sprite color based on stack count
-	fruit.get_node("Sprite2D").modulate = fruit.fruit_data.color.lightened(0.15 * stack_count)
+	# Subtle persistent glow: lighten the sprite slightly based on stack count
+	var glow_amount: float = 0.15 * stack_count
+	fruit.get_node("Sprite2D").modulate = Color(1.0 + glow_amount, 1.0 + glow_amount, 1.0 + glow_amount, 1.0)
 
 
 # =============================================================================
