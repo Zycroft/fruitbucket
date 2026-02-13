@@ -100,8 +100,8 @@ func _deactivate_fruit(fruit: Fruit) -> void:
 	## Safely removes a fruit from physics simulation and queues it for deletion.
 	## CRITICAL: Never call queue_free() directly from a physics callback.
 	## This pattern prevents the "flushing queries" crash.
-	fruit.set_contact_monitor(false)
-	fruit.freeze = true
+	fruit.set_deferred("contact_monitor", false)
+	fruit.set_deferred("freeze", true)
 	fruit.get_node("CollisionShape2D").set_deferred("disabled", true)
 	fruit.visible = false
 	fruit.call_deferred("queue_free")
