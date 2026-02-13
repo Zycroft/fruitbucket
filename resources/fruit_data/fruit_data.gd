@@ -3,7 +3,7 @@ extends Resource
 ## Data resource describing a single fruit tier.
 ## Each of the 8 tiers has a corresponding .tres file.
 
-## Tier index (0-indexed: 0 = Blueberry, 7 = Watermelon).
+## Tier index (0-indexed: 0 = Cherry, 7 = Watermelon).
 @export var tier: int = 0
 
 ## Human-readable fruit name.

@@ -69,13 +69,13 @@ func _ready() -> void:
 func _load_fruit_types() -> void:
 	## Load all 8 FruitData .tres files in tier order.
 	var paths: Array[String] = [
-		"res://resources/fruit_data/tier_1_blueberry.tres",
+		"res://resources/fruit_data/tier_1_cherry.tres",
 		"res://resources/fruit_data/tier_2_grape.tres",
-		"res://resources/fruit_data/tier_3_cherry.tres",
-		"res://resources/fruit_data/tier_4_strawberry.tres",
-		"res://resources/fruit_data/tier_5_orange.tres",
-		"res://resources/fruit_data/tier_6_apple.tres",
-		"res://resources/fruit_data/tier_7_pear.tres",
+		"res://resources/fruit_data/tier_3_strawberry.tres",
+		"res://resources/fruit_data/tier_4_orange.tres",
+		"res://resources/fruit_data/tier_5_apple.tres",
+		"res://resources/fruit_data/tier_6_peach.tres",
+		"res://resources/fruit_data/tier_7_pineapple.tres",
 		"res://resources/fruit_data/tier_8_watermelon.tres",
 	]
 	for path in paths:

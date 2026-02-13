@@ -11,11 +11,11 @@ const BOUNCY_BERRY_BOUNCE_BONUS: float = 0.5
 const BOUNCY_BASE_BOUNCE: float = 0.15
 ## Base friction value matching fruit_physics.tres.
 const BOUNCY_BASE_FRICTION: float = 0.6
-## Maximum tier affected by Bouncy Berry (0=Blueberry, 1=Grape, 2=Cherry).
+## Maximum tier affected by Bouncy Berry (0=Cherry, 1=Grape, 2=Strawberry).
 const BOUNCY_MAX_TIER: int = 2
 
 # --- Cherry Bomb constants ---
-## Cherry is tier index 2 in code (tier_3_cherry.tres has tier=2).
+## Strawberry is tier index 2 in code (tier_3_strawberry.tres has tier=2).
 const CHERRY_TIER: int = 2
 ## Blast radius in pixels.
 const CHERRY_BOMB_RADIUS: float = 200.0
@@ -54,8 +54,7 @@ const GOLDEN_TOUCH_COINS: int = 2
 ## Lucky Break: 15% independent chance per card to award bonus coins.
 const LUCKY_BREAK_CHANCE: float = 0.15
 const LUCKY_BREAK_COINS: int = 5
-## Pineapple Express: triggers when Pear (code tier 6) is created.
-## Mapped from "pineapple" since no pineapple tier exists (per research recommendation).
+## Pineapple Express: triggers when Pineapple (code tier 6) is created.
 const PINEAPPLE_TIER: int = 6
 const PINEAPPLE_BONUS_SCORE: int = 100
 const PINEAPPLE_BONUS_COINS: int = 20
@@ -121,7 +120,7 @@ func _get_fruit_container() -> Node:
 
 func _on_fruit_merged(old_tier: int, new_tier: int, merge_pos: Vector2) -> void:
 	## Dispatch merge-triggered effects.
-	# Cherry Bomb: explode on cherry merge
+	# Cherry Bomb: explode on strawberry merge (tier 2)
 	var cherry_count: int = _count_active("cherry_bomb")
 	if cherry_count > 0 and old_tier == CHERRY_TIER:
 		_apply_cherry_bomb(merge_pos, cherry_count)
@@ -230,7 +229,7 @@ func _apply_bouncy_berry_all() -> void:
 
 func _apply_bouncy_to_fruit(fruit: Fruit, stack_count: int) -> void:
 	## Apply Bouncy Berry bounce modification to a single fruit.
-	## Only affects tiers 0-2 (Blueberry, Grape, Cherry).
+	## Only affects tiers 0-2 (Cherry, Grape, Strawberry).
 	if fruit.fruit_data.tier > BOUNCY_MAX_TIER:
 		# Restore default material for non-affected tiers
 		fruit.physics_material_override = _default_physics_material
@@ -317,13 +316,13 @@ func _spawn_shockwave(pos: Vector2) -> void:
 func _load_fruit_types() -> void:
 	## Load all 8 FruitData .tres files in tier order for base score lookup.
 	var paths: Array[String] = [
-		"res://resources/fruit_data/tier_1_blueberry.tres",
+		"res://resources/fruit_data/tier_1_cherry.tres",
 		"res://resources/fruit_data/tier_2_grape.tres",
-		"res://resources/fruit_data/tier_3_cherry.tres",
-		"res://resources/fruit_data/tier_4_strawberry.tres",
-		"res://resources/fruit_data/tier_5_orange.tres",
-		"res://resources/fruit_data/tier_6_apple.tres",
-		"res://resources/fruit_data/tier_7_pear.tres",
+		"res://resources/fruit_data/tier_3_strawberry.tres",
+		"res://resources/fruit_data/tier_4_orange.tres",
+		"res://resources/fruit_data/tier_5_apple.tres",
+		"res://resources/fruit_data/tier_6_peach.tres",
+		"res://resources/fruit_data/tier_7_pineapple.tres",
 		"res://resources/fruit_data/tier_8_watermelon.tres",
 	]
 	for path in paths:
@@ -410,7 +409,7 @@ func _apply_lucky_break() -> int:
 
 
 func _apply_pineapple_express(new_tier: int) -> Dictionary:
-	## Pineapple Express: +100 score and +20 coins when Pear is created.
+	## Pineapple Express: +100 score and +20 coins when Pineapple is created.
 	## Returns {"score": int, "coins": int}.
 	var count: int = _count_active("pineapple_express")
 	if count <= 0:

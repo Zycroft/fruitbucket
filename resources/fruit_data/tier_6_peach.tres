@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="FruitData" load_steps=3 format=3 uid="uid://apple06"]
 
 [ext_resource type="Script" path="res://resources/fruit_data/fruit_data.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/sprites/fruits/placeholder_fruit.png" id="2_sprite"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fruits/peach.png" id="2_sprite"]
 
 [resource]
 script = ExtResource("1_script")
 tier = 5
-fruit_name = "Apple"
+fruit_name = "Peach"
 radius = 54.0
 sprite = ExtResource("2_sprite")
 score_value = 32
-color = Color(0.133, 0.545, 0.133, 1)
+color = Color(1.0, 0.702, 0.612, 1)
 mass_override = 3.5
 is_droppable = false

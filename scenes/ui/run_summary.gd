@@ -3,10 +3,10 @@ extends CanvasLayer
 ## Shows 7 stats animating in one by one after game over.
 ## Play Again restarts the run, Quit reloads the page.
 
-## Hardcoded tier names (FruitData doesn't store display names).
+## Hardcoded tier names matching the kawaii fruit lineup.
 const TIER_NAMES: Array[String] = [
-	"Blueberry", "Grape", "Cherry", "Strawberry",
-	"Orange", "Apple", "Pear", "Watermelon",
+	"Cherry", "Grape", "Strawberry", "Orange",
+	"Apple", "Peach", "Pineapple", "Watermelon",
 ]
 
 ## Stat label references (populated in _ready).
