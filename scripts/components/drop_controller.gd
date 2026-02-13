@@ -144,10 +144,10 @@ func _apply_heavy_preview() -> void:
 	var effect_system: CardEffectSystem = get_tree().get_first_node_in_group("card_effect_system")
 	if effect_system and effect_system.has_heavy_charges():
 		_current_fruit.is_heavy = true
-		_current_fruit.get_node("Sprite2D").modulate = _current_fruit.fruit_data.color.darkened(0.3)
+		_current_fruit.get_node("Sprite2D").modulate = Color(0.7, 0.7, 0.7, 1.0)
 	else:
 		_current_fruit.is_heavy = false
-		_current_fruit.get_node("Sprite2D").modulate = _current_fruit.fruit_data.color
+		_current_fruit.get_node("Sprite2D").modulate = Color.WHITE
 
 
 func _on_heavy_charges_changed(_charges: int, _max_charges: int) -> void:
