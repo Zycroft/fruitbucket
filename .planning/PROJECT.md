@@ -8,34 +8,49 @@ A Suika-style fruit-dropping puzzle game built in Godot 4.5 with a roguelike car
 
 The drop-merge-physics loop must feel satisfying and correct — fruits fall naturally, collide realistically, and merge reliably. Without solid core mechanics, the card system has nothing to build on.
 
+## Current Milestone: v1.1 Kawaii Art Overhaul
+
+**Goal:** Replace all procedural/vector visuals with AI-generated kawaii/chibi art — cute expressive fruits, a charming basket container, warm background scene, and cohesive UI styling — using Runware image generation.
+
+**Target features:**
+- 8 kawaii/chibi fruit sprites with unique expressive faces per tier
+- Cute basket/bucket container art replacing procedural Polygon2D
+- Warm, inviting background scene replacing solid ColorRects
+- UI element styling to match the cohesive kawaii art direction
+- All art generated via Runware AI, processed for game integration (transparency, sizing)
+
 ## Requirements
 
-### Validated
+### Validated (v1.0)
 
-(None yet — ship to validate)
+- Core Suika drop/merge/physics gameplay (8 fruit tiers) — v1.0
+- Gravity-based physics container with game-over on overflow — v1.0
+- Score system with chain reaction multipliers — v1.0
+- Next fruit preview — v1.0
+- Roguelike card system with 3 active card slots — v1.0
+- 10 card effects (physics/merge/scoring/economy) — v1.0
+- Card shop at score thresholds — v1.0
+- Starter card pick at run start — v1.0
+- Per-run card economy — v1.0
+- Desktop + mobile support with touch controls — v1.0
+- Run summary screen at game over — v1.0
 
 ### Active
 
-- [ ] Core Suika drop/merge/physics gameplay (11 fruit tiers, blueberry → watermelon)
-- [ ] Gravity-based physics container with game-over on overflow
-- [ ] Score system based on merge values with chain reaction bonuses
-- [ ] Next fruit preview
-- [ ] Roguelike card system with 3-5 active card slots per run
-- [ ] Card effects that modify fruit behavior (multi-type, bouncy physics, etc.)
-- [ ] In-run card shop triggered at score thresholds
-- [ ] Free starter card pack at the beginning of each run
-- [ ] In-game currency earned from merges/score, spent on card offers
-- [ ] Per-run card economy (no persistence between runs)
-- [ ] Desktop + mobile support with touch controls
-- [ ] Cute fruit sprite art style
+- [ ] Kawaii/chibi fruit sprites for all 8 tiers
+- [ ] Cute basket container art
+- [ ] Background scene art
+- [ ] Cohesive UI styling matching art direction
 
 ### Out of Scope
 
-- Real-money microtransactions — in-game currency only for v1
+- Real-money microtransactions — in-game currency only
 - Persistent card collections between runs — classic roguelike per-run design
 - Multiplayer — single-player focus
-- Leaderboards / online features — local play only for v1
+- Leaderboards / online features — local play only
 - Advanced roguelike elements (meta-progression, unlockables) — planned for later milestones
+- Card art / card icons — defer to future milestone
+- Animated fruit sprites (idle, squash/stretch) — static sprites for v1.1
 
 ## Context
 
@@ -81,5 +96,8 @@ The drop-merge-physics loop must feel satisfying and correct — fruits fall nat
 | 3-5 active card slots | Forces strategic choices, prevents card stacking from trivializing gameplay | — Pending |
 | In-game currency only | No real-money complexity for v1 | — Pending |
 
+| Runware AI for game art generation | Fast iteration, consistent kawaii style, no manual art pipeline needed | — Pending |
+| Full visual overhaul in v1.1 | Cohesive art direction improves game feel more than piecemeal updates | — Pending |
+
 ---
-*Last updated: 2026-02-07 after initialization*
+*Last updated: 2026-02-13 after milestone v1.1 start*
