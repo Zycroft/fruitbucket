@@ -61,11 +61,17 @@ Fruit collision (body_entered, same tier)
 4. **Overflow false positives** — Per-fruit dwell timer, not simple area overlap. Ignores dropping/merging/grace-period fruits.
 5. **Physics stability** — `solver_iterations=6`, `CircleShape2D` only, `linear_damp=0.5`, `can_sleep=true`, friction=0.6, bounce=0.15.
 
+## Verification
+
+**Deployed URL:** https://zycroft.github.io/fruitbucket/
+
+The site auto-deploys on push to `main` via GitHub Actions. Allow up to 5 minutes for changes to be live. Use `/z:verify` to validate the deployed build via Playwright.
+
 ## Planning
 
 Phase-based development docs live in `.planning/`. Key files:
 - `PROJECT.md` — Core value prop, requirements, constraints
-- `ROADMAP.md` — 8-phase roadmap (7 complete, Phase 8 remaining: card activation feedback & starter kits)
+- `ROADMAP.md` — 8-phase roadmap (all 8 phases complete)
 - `STATE.md` — Current position, velocity metrics, accumulated architectural decisions
 - `research/PITFALLS.md` — Detailed pitfall analysis with solutions
 
