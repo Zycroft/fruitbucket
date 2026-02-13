@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 Phase: 8 of 8 (Card Activation Feedback & Starter Kits) -- COMPLETE
 Plan: 2 of 2 in current phase (Phase 8 complete)
 Status: All 8 phases complete -- game feature-complete with starter kits and run summary
-Last activity: 2026-02-12 - Completed quick task 3: Playwright automated verification of all phases
+Last activity: 2026-02-13 - Completed quick task 4: fix the deployment
 
 Progress: [██████████] 100% (All 8 phases complete)
 
@@ -140,10 +140,11 @@ None yet.
 |---|-------------|------|--------|-----------|
 | 1 | Deploy game to zycroft.duckdns.org/bucket via GitHub Actions | 2026-02-12 | d0698fc | [1-deploy-game-to-zycroft-duckdns-org-bucke](./quick/1-deploy-game-to-zycroft-duckdns-org-bucke/) |
 | 2 | Add unique cartoon faces to all 8 fruit types | 2026-02-12 | bad8203 | [2-add-faces-to-each-of-the-fruit-types](./quick/2-add-faces-to-each-of-the-fruit-types/) |
-| 3 | Playwright automated verification of all phases | 2026-02-12 | pending | [3-playwright-automated-verification-of-all](./quick/3-playwright-automated-verification-of-all/) |
+| 3 | Playwright automated verification of all phases | 2026-02-12 | 59d45bc | [3-playwright-automated-verification-of-all](./quick/3-playwright-automated-verification-of-all/) |
+| 4 | Fix the deployment | 2026-02-13 | 7ee50cd | [4-fix-the-deployment](./quick/4-fix-the-deployment/) |
 
 ## Session Continuity
 
-Last session: 2026-02-12
-Stopped at: Completed Playwright verification. Found 2 game bugs (physics errors, game freeze) and 1 deploy issue. Phase 8 not deployed.
+Last session: 2026-02-13
+Stopped at: Fixed deployment — repo made public, cache-busting added, both GitHub Pages and duckdns deploying successfully.
 Resume file: None
