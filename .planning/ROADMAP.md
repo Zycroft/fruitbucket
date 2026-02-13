@@ -98,7 +98,11 @@ Plans:
   2. Fruit sprites render sharply at all tier sizes from 15px radius (blueberry) to 80px radius (watermelon) without visible distortion, blurriness, or clipping against the collision shape
   3. Fruits still collide, stack, and merge identically to v1.0 behavior -- the art change is purely visual with no physics side effects
   4. The old FaceRenderer draw-based faces and white circle tinting are fully removed -- all visuals come from the new sprite textures
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 09-01-PLAN.md -- Generate 8 kawaii fruit sprites via Runware AI with human approval (Wave 1)
+- [ ] 09-02-PLAN.md -- Integrate sprites, rename tiers, remove FaceRenderer and color tinting (Wave 2)
 
 ### Phase 10: Fruit Features
 **Goal**: All fruit-dependent UI and gameplay visuals work correctly with the new sprites -- the preview shows what you are about to drop, players can see the full progression, and the Wild Fruit effect remains readable.
@@ -157,7 +161,7 @@ Note: Phase 11 (Basket) depends on Phase 9 (Fruit Sprites) for art direction but
 | 6. Card Effects -- Physics & Merge | v1.0 | 2/2 | Complete | 2026-02-09 |
 | 7. Card Effects -- Scoring & Economy | v1.0 | 2/2 | Complete | 2026-02-10 |
 | 8. Card Activation Feedback & Starter Kits | v1.0 | 2/2 | Complete | 2026-02-12 |
-| 9. Fruit Sprites | v1.1 | 0/TBD | Not started | - |
+| 9. Fruit Sprites | v1.1 | 0/2 | Planned | - |
 | 10. Fruit Features | v1.1 | 0/TBD | Not started | - |
 | 11. Basket Art | v1.1 | 0/TBD | Not started | - |
 | 12. Background Scene | v1.1 | 0/TBD | Not started | - |
