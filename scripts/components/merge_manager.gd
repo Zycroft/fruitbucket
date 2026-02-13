@@ -72,28 +72,32 @@ func request_merge(fruit_a: Fruit, fruit_b: Fruit) -> void:
 		old_tier = tier_a
 		new_tier = old_tier + 1
 
-	# Safely deactivate both fruits (no queue_free in physics callback).
+	# Hide fruits immediately for visual feedback.
+	fruit_a.visible = false
+	fruit_b.visible = false
+
+	# Defer all physics modifications to after the physics step completes.
+	# This prevents "flushing queries" errors from add_child/shape changes.
+	call_deferred("_execute_merge", fruit_a, fruit_b, merge_pos, old_tier, new_tier, id_a, id_b)
+
+
+func _execute_merge(fruit_a: Fruit, fruit_b: Fruit, merge_pos: Vector2, old_tier: int, new_tier: int, id_a: int, id_b: int) -> void:
+	## Runs deferred (outside physics step) to safely modify physics state.
 	_deactivate_fruit(fruit_a)
 	_deactivate_fruit(fruit_b)
 
-	# Spawn the next-tier fruit, or vanish if watermelon pair.
 	if new_tier < _fruit_types.size():
 		var new_fruit: Fruit = spawn_fruit(new_tier, merge_pos)
 		new_fruit.merge_grace = true
-		# Clear merge_grace after 0.5s so the new fruit can participate in merges.
 		get_tree().create_timer(0.5).timeout.connect(func():
 			if is_instance_valid(new_fruit):
 				new_fruit.merge_grace = false
 		)
-		# Signal with the actual new tier.
 		EventBus.fruit_merged.emit(old_tier, new_tier, merge_pos)
 	else:
-		# Watermelon pair vanish -- no new fruit spawned.
-		# Emit with new_tier = _fruit_types.size() to indicate vanish.
 		EventBus.fruit_merged.emit(old_tier, _fruit_types.size(), merge_pos)
 
-	# Clean up pending locks after the physics frame.
-	call_deferred("_cleanup_pending", id_a, id_b)
+	_cleanup_pending(id_a, id_b)
 
 
 func _deactivate_fruit(fruit: Fruit) -> void:
