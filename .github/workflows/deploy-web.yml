@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Web Build
 
 on:
   push:
@@ -56,6 +56,13 @@ jobs:
           mkdir -p build/web
           godot --headless --path . --export-release "Web" build/web/index.html
 
+      - name: Cache-bust assets
+        run: |
+          V=${GITHUB_SHA::8}
+          sed -i "s/index\.pck/index.pck?v=${V}/g" build/web/index.html
+          sed -i "s/index\.wasm/index.wasm?v=${V}/g" build/web/index.html
+          sed -i "s/index\.js/index.js?v=${V}/g" build/web/index.html
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
@@ -112,7 +119,7 @@ jobs:
 
       - name: Deploy via rsync
         run: |
-          rsync -avz --delete \
+          rsync -avzc --delete \
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             build/web/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/bucket/
