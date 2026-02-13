@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 9 of 13 (Fruit Sprites)
-Plan: -- (not yet planned)
-Status: Ready to plan
-Last activity: 2026-02-13 -- Roadmap created for v1.1 (phases 9-13)
+Plan: 09-01 complete, executing 09-02
+Status: Executing Wave 2
+Last activity: 2026-02-13 -- Plan 09-01 complete (8 kawaii fruit sprites generated)
 
-Progress: [################░░] 82% overall (17/17 v1.0 + 0/? v1.1)
+Progress: [################░░] 82% overall (17/17 v1.0 + 0.5/2 phase 9)
 
 ## Performance Metrics
 
@@ -53,8 +53,8 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Art concern]: Generated images need transparent backgrounds for game integration
-- [Art concern]: Fruit sprites must work at multiple sizes (15px blueberry to 80px watermelon radius)
+- [Resolved]: Sprites have RGBA transparent backgrounds (512x512)
+- [Resolved]: 512px source scales cleanly to all tier sizes (15px-80px radius)
 
 ### Quick Tasks Completed
 
