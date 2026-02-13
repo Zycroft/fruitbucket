@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 Phase: 8 of 8 (Card Activation Feedback & Starter Kits) -- COMPLETE
 Plan: 2 of 2 in current phase (Phase 8 complete)
 Status: All 8 phases complete -- game feature-complete with starter kits and run summary
-Last activity: 2026-02-13 - Completed quick task 5: fix game freeze at ~1500 score
+Last activity: 2026-02-13 - Completed quick task 6: fix remaining errors
 
 Progress: [██████████] 100% (All 8 phases complete)
 
@@ -143,9 +143,10 @@ None yet.
 | 3 | Playwright automated verification of all phases | 2026-02-12 | 59d45bc | [3-playwright-automated-verification-of-all](./quick/3-playwright-automated-verification-of-all/) |
 | 4 | Fix the deployment | 2026-02-13 | 7ee50cd | [4-fix-the-deployment](./quick/4-fix-the-deployment/) |
 | 5 | Fix game freeze at ~1500 score | 2026-02-13 | 558d0a7 | [5-fix-the-game-freeze-bug-at-1500-score](./quick/5-fix-the-game-freeze-bug-at-1500-score/) |
+| 6 | Fix remaining errors | 2026-02-13 | 9a46a7f | [6-fix-remaining-errors](./quick/6-fix-remaining-errors/) |
 
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Fixed game freeze bug — deferred shop opening to avoid pausing tree during physics callbacks.
+Stopped at: Fixed remaining physics callback errors — deferred all physics state changes in _deactivate_fruit().
 Resume file: None
