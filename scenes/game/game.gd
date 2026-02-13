@@ -58,6 +58,19 @@ func _on_score_threshold(_threshold: int) -> void:
 			and GameManager.current_state != GameManager.GameState.WAITING:
 		return
 
+	# Defer shop opening to avoid pausing the tree during physics callbacks.
+	# The signal chain (body_entered → merge → score → threshold) runs inside
+	# a physics step; pausing the tree mid-step corrupts engine state.
+	call_deferred("_open_shop")
+
+
+func _open_shop() -> void:
+	## Actually open the card shop. Runs deferred, after the physics step completes.
+	# Re-check state since it may have changed between deferral and execution.
+	if GameManager.current_state != GameManager.GameState.DROPPING \
+			and GameManager.current_state != GameManager.GameState.WAITING:
+		return
+
 	# Generate offers and advance shop level.
 	var offers: Array = CardManager.generate_shop_offers()
 	CardManager.advance_shop_level()
