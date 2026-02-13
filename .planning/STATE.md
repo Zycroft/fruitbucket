@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-13)
 
 **Core value:** The drop-merge-physics loop must feel satisfying and correct -- fruits fall naturally, collide realistically, and merge reliably.
-**Current focus:** Milestone v1.1 -- Kawaii Art Overhaul, Phase 9 (Fruit Sprites)
+**Current focus:** Milestone v1.1 -- Kawaii Art Overhaul, Phase 9 complete, ready for Phase 10 (Bucket Art)
 
 ## Current Position
 
-Phase: 9 of 13 (Fruit Sprites)
-Plan: 09-01 complete, executing 09-02
-Status: Executing Wave 2
-Last activity: 2026-02-13 -- Plan 09-01 complete (8 kawaii fruit sprites generated)
+Phase: 9 of 13 (Fruit Sprites) -- COMPLETE
+Plan: 09-02 complete (2/2 plans)
+Status: Phase 9 complete, ready for Phase 10
+Last activity: 2026-02-13 -- Phase 9 complete (kawaii fruit sprites integrated, FaceRenderer removed)
 
-Progress: [################░░] 82% overall (17/17 v1.0 + 0.5/2 phase 9)
+Progress: [#################░] 86% overall (17/17 v1.0 + 2/2 phase 9)
 
 ## Performance Metrics
 
@@ -36,15 +36,19 @@ Recent decisions affecting current work:
 - [v1.1]: Kawaii/chibi art style -- round, blushing, big-eyed cute fruits with expressive faces
 - [v1.1]: Runware AI for all art generation -- consistent style, fast iteration
 - [v1.1]: Static sprites only (no animation) -- animation deferred to future milestone
+- [09-02]: FruitData.color retained for particle effects, not sprite tinting
+- [09-02]: Card effect visuals use Color.WHITE base modulate instead of fruit_data.color
 
 ### Relevant v1.0 Context
 
-- Fruits use Vector _draw() faces on white circle sprites, tinted with FruitData.color
+- Fruits display kawaii sprite art (512x512 PNGs) with auto-scaling from FruitData.sprite
+- Fruit tier lineup: Cherry(0), Grape(1), Strawberry(2), Orange(3), Apple(4), Peach(5), Pineapple(6), Watermelon(7)
+- FruitData.color used for particle effects and card visuals only (not sprite tinting)
 - Bucket is Polygon2D trapezoid with Line2D outline
 - Background is two-layer ColorRect (beige wall + brown counter)
-- FruitData resources define tier, radius, color, mass_override
-- fruit.tscn has Sprite2D + FaceRenderer children under RigidBody2D
-- Sprite scale_factor = fruit_radius / texture_half_width (64px sprite base)
+- FruitData resources define tier, radius, color, mass_override, sprite
+- fruit.tscn has Sprite2D + CollisionShape2D under RigidBody2D (FaceRenderer removed in 09-02)
+- Sprite scale_factor = fruit_radius / texture_half_width (512px sprite base)
 - **Critical**: Never scale RigidBody2D -- scale Sprite2D and CollisionShape2D.shape.radius separately
 
 ### Pending Todos
@@ -71,5 +75,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Roadmap created for v1.1 Kawaii Art Overhaul (phases 9-13)
+Stopped at: Completed 09-02-PLAN.md (Phase 9 Fruit Sprites complete)
 Resume file: None
